@@ -6,4 +6,4 @@ The only way to erase is to restart the program.
 
 Here's something I drew with it:
 
-![Example](./SimpleContinuousSketchPad.png)
+![Example](SimpleContinuousSketchPad.png)

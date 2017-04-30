@@ -5,8 +5,6 @@ void setup() {
 }
 
 void draw() {
-  // Rectangle
-  
   fill(150);
   stroke(255);
   line(pmouseX, pmouseY, mouseX, mouseY);

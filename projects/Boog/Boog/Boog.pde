@@ -1,5 +1,7 @@
 void setup() {
   size(500, 500);
+  frameRate(60);
+  noCursor();
 }
 
 void draw() {

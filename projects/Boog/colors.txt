@@ -1,0 +1,67 @@
+reds
+#bf211e firebrick
+#ffdde2 piggy pink
+#9d5c63 rose dust
+#8c1c13 falu red
+#e3c0d3 thistle
+#ff6978 begonia
+#d33f48 english vermillion
+#db2b39 rusty red
+
+oranges
+#f7882f	cadmium orange
+#f08700 tangerine
+#e4572e flame
+#f85a3e orange soda
+#874000 chocolate
+#bc5f04 ginger
+
+yellows
+#f7c331 saffron
+#e7eb90 key lime
+#ffff82 canary
+#ffd23f sunglow
+#f4d35e stil de grain yellow
+
+greens
+#79b473 iguana green
+#1a281f dark jungle green
+#0dab76 green (munsell)
+#05a8aa persian green
+#9ee493 granny smith apple
+
+blues
+#6b7a8f	slate gray
+#60B2E5 blue jeans
+#28536b dark slate gray
+#cdf7f6 aero blue
+#2274a5 lapis lazuli
+
+violets
+#9067c6 amethyst
+#511730 acajou
+#5f0f40 tyrian purple
+#4e598c purple navy
+#963668 imperial
+#a74482 mystic maroon
+#29335c deep koamaru
+
+mutes
+#6b7a8f	slate gray
+#dcc7aa dark vanilla
+#e0f2e9 alabaster
+#93867f cinereous
+
+blacks and near blacks
+#001427 rich black
+#1a281f dark jungle green
+#36413e onyx
+#28536b dark slate gray
+#0D1321 eerie black
+
+whites and near whites
+#f7fff6 mint cream
+#dad6d6 timberwolf
+#ffdde2 piggy pink
+#cdf7f6 aero blue
+#eof2e9 alabaster

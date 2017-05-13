@@ -1,3 +1,7 @@
+/*
+Draws Boog, a bug-like creature
+*/
+
 // establish colors
 color black = #160f29;
 color yellow = #f7c331;

@@ -4,4 +4,4 @@ This basic rollover feature is fundamental to many two-dimensional user interfac
 
 The first sketch contains two simples shapes--a rectancle and a circle. The shapes change color when the user positions the mouse within their boundaries.
 
-![Shapes that react to the mouse cursor(RolloverShapes/RolloverShapes.gif)
+![Shapes that react to the mouse cursor](RolloverShapes/RolloverShapes.gif)

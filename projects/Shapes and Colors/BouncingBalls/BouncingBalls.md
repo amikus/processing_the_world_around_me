@@ -1,13 +1,13 @@
-so much depends
+so much depends  
 upon
 
-a gray flat
+a gray flat  
 ball
 
-glazed with refreshed
+glazed with refreshed  
 pixels
 
-beside the git console
+beside the git console  
 window
 
 ![A bouncing ball](BouncingBall.gif)

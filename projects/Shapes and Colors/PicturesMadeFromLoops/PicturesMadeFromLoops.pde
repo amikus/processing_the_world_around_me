@@ -47,7 +47,7 @@ void draw() {
     
     // a series of concentric, unshaded ellipses
     case 2:
-    S
+    
       noFill();
       
       for (int i = 0; i < 10; i++) {

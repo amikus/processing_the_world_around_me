@@ -12,10 +12,10 @@ Ultimately, I want to be a master. I want to be someone who understands his craf
 
 So while I will take pride in finding solutions quickly, and during interviews I may claim, like Picasso:
 
-  Je ne cherche pas, je trouve.  
+&nbsp;&nbsp;&nbsp;&nbsp;Je ne cherche pas, je trouve.  
   
-  [I do not seek, I find.]  
+&nbsp;&nbsp;&nbsp;&nbsp;[I do not seek, I find.]  
 
 In this space, without shame or reservation, I say:
 
-  Je ne trouve pas, je cherche.  
+&nbsp;&nbsp;&nbsp;&nbsp;Je ne trouve pas, je cherche.  

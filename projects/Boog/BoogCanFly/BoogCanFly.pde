@@ -87,6 +87,10 @@ int eyeHeight = headRadius;
 int distanceToTopOfEye = 3 * (headDiameter/4);
 int distanceToLeftEye = headDiameter/6 + eyeWidth;
 int distanceToRightEye = headDiameter/6;
+int xLeftEyeCenter = distanceToLeftEye - eyeWidth/2;
+int yLeftEyeCenter = distanceToTopOfEye - eyeHeight/2;
+int xRightEyeCenter = distanceToRightEye + eyeWidth/2;
+int yRightEyeCenter = distanceToTopOfEye - eyeHeight/2;
 
 // legs
 int xBaseOfAllLegs = halfBodyWidth;
@@ -123,11 +127,10 @@ void setup() {
   // initialize basic window conditions
   size(500, 500);
   frameRate(60);
-  noCursor();
   
   // establish Boog's starting position (center of window)
   boogX = width/2;
-  boogY = height/2;
+  boogY = height * .45;
   
 }
 
@@ -247,12 +250,22 @@ void draw() {
   if (boogIsFlying) {
     boogX += flightSpeed;
   }
+  
+  /**************************
+    Lasers
+  ***************************/
+  
+  // if right mouse button is depressed, draw lasers to mouse point
+  if (mousePressed && mouseButton == RIGHT) {
+    stroke(red);
+    line (-xLeftEyeCenter, -yLeftEyeCenter, mouseX-boogX, mouseY-boogY);
+    line (xRightEyeCenter, -yRightEyeCenter, mouseX-boogX, mouseY-boogY);
+  }
 }
+
 
 void mousePressed() {
-  boogIsFlying = !boogIsFlying;
-}
-
-void keyPressed() {
-  
+  if (mouseButton == LEFT) {
+     boogIsFlying = !boogIsFlying; 
+  }
 }

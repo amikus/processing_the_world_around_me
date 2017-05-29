@@ -118,7 +118,7 @@ void setup() {
 void draw() {
   background(255);
   
-  // set CENTER and stroke mode
+  // set CORNER and stroke mode
   ellipseMode(CORNER);
   rectMode(CORNER);
   stroke(black);

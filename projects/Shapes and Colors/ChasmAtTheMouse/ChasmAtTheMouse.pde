@@ -21,45 +21,13 @@ void setup() {
 void draw() {
   background(0);
   
+  // depending on how many times mouse has been clicked, the void will either be...
   
-  if (columnsOrRows == "columns") {
-    
-    // begin drawing at the left side of the screen
-    int columnPosition = 0;
-    
-    while (columnPosition < width) {
-      
-      // determine how far the mouse is from the column that's being drawn
-      float distance = abs(mouseX-columnPosition);
-      // the further the column is from mouseX, the lighter it should be drawn
-      fill(distance);
-      // draw the column
-      rect(columnPosition, 0, columnSize, height);
-      
-      // move to the next column position
-      columnPosition += columnSize;
-    }
-    
-  } else if (columnsOrRows == "rows") {
-    
-    // begin drawing at the top of the screen
-    int rowPosition = 0;
-    
-    while (rowPosition < height) {
-      
-      // determine how far the mouse is from the row that's being drawn
-      float distance = abs(mouseY-rowPosition);
-      // the further the row is from mouseY, the lighter it should be drawn
-      fill(distance);
-      //  draw the row
-      rect(0, rowPosition, width, rowSize);
-      
-      // move to the next row position
-      rowPosition += rowSize;
-    }
+  if (columnsOrRows == "columns") {        // ...vertical or...
+    drawVerticalVoid();    
+  } else if (columnsOrRows == "rows") {    // ...horizontal
+    drawHorizontalVoid();
   }
-  
-  
 }
 
 void mousePressed() {
@@ -68,5 +36,43 @@ void mousePressed() {
     columnsOrRows = "rows";
   } else {
     columnsOrRows = "columns";
+  }
+}
+
+// draw the void vertically
+void drawVerticalVoid() {
+  // begin drawing at the left side of the screen
+  int columnPosition = 0;
+  
+  while (columnPosition < width) {
+    
+    // determine how far the mouse is from the column that's being drawn
+    float distance = abs(mouseX-columnPosition);
+    // the further the column is from mouseX, the lighter it should be drawn
+    fill(distance);
+    // draw the column
+    rect(columnPosition, 0, columnSize, height);
+    
+    // move to the next column position
+    columnPosition += columnSize;
+  }
+}
+
+// draw the void horizontally
+void drawHorizontalVoid() {
+  // begin drawing at the top of the screen
+    int rowPosition = 0;
+    
+  while (rowPosition < height) {
+    
+    // determine how far the mouse is from the row that's being drawn
+    float distance = abs(mouseY-rowPosition);
+    // the further the row is from mouseY, the lighter it should be drawn
+    fill(distance);
+    //  draw the row
+    rect(0, rowPosition, width, rowSize);
+    
+    // move to the next row position
+    rowPosition += rowSize;
   }
 }

@@ -2,8 +2,6 @@
 Draws circles at random positions of random colors and sizes
 */
 
-// will hold circle's rgb color and alpha channel values
-float r, g, b, a;
 // will hold circle's diameter and x,y coordinates
 float diam, x, y;
 
@@ -19,17 +17,24 @@ void setup() {
 }
 
 void draw() {
-  // get random color and alpha
-  r = random(255);
-  g = random(255);
-  b = random(255);
-  a = random(255);
   
   // get random diameter and coordinates
   diam = random(20);
   x = random(width);
   y = random(height);
   
-  fill(r, g, b, a);
+  // draw circle and pass in a randomly generated color
+  drawCircle(generateRandomColor());
+}
+
+// Generate color with random r, g, b, and a values
+color generateRandomColor() {
+  return color(random(255), random(255), random(255), random(255));
+}
+
+// Draw circle of specified color
+void drawCircle(color Color) {
+
+  fill(Color);
   ellipse(x, y, diam, diam);
 }

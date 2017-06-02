@@ -120,10 +120,9 @@ void setup() {
   // calculate derived values used for drawing Boog
   calculateWingValues();
   calculateBodyValues();
-  calculateHeadValues();
-  calculateEyeValues();
+  calculateHeadValues();  
   calculateLegValues();
-  calculateFootValues();
+
 }
 
 /***************************************************
@@ -143,84 +142,10 @@ void draw() {
   
   translate(mouseX, mouseY);
   
-  
-  // Draw Boog's wings
-  // left wing
-  fill(yellow);
-  triangle(-halfUpperWingSpan, -distanceToTopOfUpperWing, 0, -distanceToTopOfUpperWing, 0, distanceToBottomOfUpperWing);
-  triangle(-halfLowerWingSpan, distanceToBottomOfLowerWing, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWing);
-  fill(orange);
-  triangle(-halfLowerWingSpanMid, distanceToBottomOfLowerWingMid, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWingMid);
-  fill(red);
-  triangle(-halfLowerWingSpanSmall, distanceToBottomOfLowerWingSmall, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWingSmall);
-  // right wing
-  fill(yellow);
-  triangle(halfUpperWingSpan, -distanceToTopOfUpperWing, 0, -distanceToTopOfUpperWing, 0, distanceToBottomOfUpperWing);
-  triangle(halfLowerWingSpan, distanceToBottomOfLowerWing, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWing);
-  fill(orange);
-  triangle(halfLowerWingSpanMid, distanceToBottomOfLowerWingMid, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWingMid);
-  fill(red);
-  triangle(halfLowerWingSpanSmall, distanceToBottomOfLowerWingSmall, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWingSmall);
-  
-  // Draw Boog's body
-  strokeWeight(2);
-  fill(green);
-  rect(-halfBodyWidth, -halfBodyHeight, bodyWidth, bodyHeight);
-  
-  // Draw Boog's head
-  strokeWeight(2);
-  fill(green);
-  ellipse(-headRadius, -headDiameter, headDiameter, headDiameter);
-  
-  // antennae lines
-  line(-distanceToAntennaeTip, -headDiameter, -distanceToAntennaeBend, -distanceToAntennaeTop);
-  line(-distanceToAntennaeBend, -distanceToAntennaeTop, -distanceToAntennaeBase, -headDiameter);
-  line(distanceToAntennaeTip, -headDiameter, distanceToAntennaeBend, -distanceToAntennaeTop);
-  line(distanceToAntennaeBend, -distanceToAntennaeTop, distanceToAntennaeBase, -headDiameter);
-  
-  // antennae dots
-  strokeWeight(1);
-  fill(black);
-  ellipse(-distanceToAntennaeBallEdgeLeft, -distanceToAntennaeBallTop, antennaeBallDiameter, antennaeBallDiameter);
-  ellipse(distanceToAntennaeBallEdgeRight, -distanceToAntennaeBallTop, antennaeBallDiameter, antennaeBallDiameter);
-  
-  // Draw Boog's eyes
-  strokeWeight(1);
-  fill(black);
-  ellipse(-distanceToLeftEye, -distanceToTopOfEye, eyeWidth, eyeHeight);
-  ellipse(distanceToRightEye, -distanceToTopOfEye, eyeWidth, eyeHeight);
-  
-  // Draw Boog's arms/legs
-
-  fill(black);
-  
-  // top
-  strokeWeight(2);
-  line(-xBaseOfAllLegs, yBaseOfTopLeg, -xTipOfElbow, yTipOfElbow);
-  line(-xTipOfElbow, yTipOfElbow, -xTipOfTopLeg, yTipOfTopLeg);
-  strokeWeight(1);
-  ellipse(-xLeftTopFoot, yTopFoot, footDiameter, footDiameter);
-  strokeWeight(2);
-  line(xBaseOfAllLegs, yBaseOfTopLeg, xTipOfElbow, yTipOfElbow);
-  line(xTipOfElbow, yTipOfElbow, xTipOfTopLeg, yTipOfTopLeg);
-  strokeWeight(1);
-  ellipse(xRightTopFoot, yTopFoot, footDiameter, footDiameter);
-  
-  // middle
-  strokeWeight(2);
-  line(-xBaseOfAllLegs, yBaseOfMidLeg, -xTipOfMidAndBottomLeg, yTipOfMidLeg);
-  line(xBaseOfAllLegs, yBaseOfMidLeg, xTipOfMidAndBottomLeg, yTipOfMidLeg);
-  strokeWeight(1);
-  ellipse(-xLeftMidAndBottomFoot, yMidFoot, footDiameter, footDiameter);
-  ellipse(xRightMidAndBottomFoot, yMidFoot, footDiameter, footDiameter);
-  
-  // bottom
-  strokeWeight(2);
-  line(-xBaseOfAllLegs, yBaseOfBottomLeg, -xTipOfMidAndBottomLeg, yTipOfBottomLeg);
-  line(xBaseOfAllLegs, yBaseOfBottomLeg, xTipOfMidAndBottomLeg, yTipOfBottomLeg);
-  strokeWeight(1);
-  ellipse(-xLeftMidAndBottomFoot, yBottomFoot, footDiameter, footDiameter);
-  ellipse(xRightMidAndBottomFoot, yBottomFoot, footDiameter, footDiameter);
+  drawBoogWings();  
+  drawBoogBody();
+  drawBoogHead();
+  drawBoogLegs();
   
 }
 
@@ -270,6 +195,11 @@ void calculateBodyValues() {
 // Head
 void calculateHeadValues() {
   headRadius = headDiameter / 2;
+  calculateAntennaeValues();
+  calculateEyeValues();
+}
+
+void calculateAntennaeValues() {
   distanceToAntennaeTip = distanceToAntennaeBase + antennaeLength;
   distanceToAntennaeBend = distanceToAntennaeBase + (antennaeLength/2);
   distanceToAntennaeTop = headDiameter + antennaeHeight;
@@ -301,6 +231,8 @@ void calculateLegValues() {
   xTipOfMidAndBottomLeg = halfBodyWidth + halfBodyWidth;
   yTipOfMidLeg = yBaseOfMidLeg + halfBodyWidth;
   yTipOfBottomLeg = yBaseOfBottomLeg + halfBodyWidth;
+  
+  calculateFootValues();
 }
 
 // feet
@@ -315,3 +247,108 @@ void calculateFootValues() {
   yMidFoot = yTipOfMidLeg - footRadius;
   yBottomFoot = yTipOfBottomLeg - footRadius;
 }
+
+
+/***************************************************
+****************************************************
+* Draw Boog                                        *
+****************************************************
+***************************************************/
+
+// Draw Boog's wings
+void drawBoogWings() {
+  
+  // left wing
+  fill(yellow);
+  triangle(-halfUpperWingSpan, -distanceToTopOfUpperWing, 0, -distanceToTopOfUpperWing, 0, distanceToBottomOfUpperWing);
+  triangle(-halfLowerWingSpan, distanceToBottomOfLowerWing, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWing);
+  fill(orange);
+  triangle(-halfLowerWingSpanMid, distanceToBottomOfLowerWingMid, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWingMid);
+  fill(red);
+  triangle(-halfLowerWingSpanSmall, distanceToBottomOfLowerWingSmall, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWingSmall);
+  
+  // right wing
+  fill(yellow);
+  triangle(halfUpperWingSpan, -distanceToTopOfUpperWing, 0, -distanceToTopOfUpperWing, 0, distanceToBottomOfUpperWing);
+  triangle(halfLowerWingSpan, distanceToBottomOfLowerWing, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWing);
+  fill(orange);
+  triangle(halfLowerWingSpanMid, distanceToBottomOfLowerWingMid, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWingMid);
+  fill(red);
+  triangle(halfLowerWingSpanSmall, distanceToBottomOfLowerWingSmall, 0, -distanceToTopOfLowerWing, 0, distanceToBottomOfLowerWingSmall);
+  
+}
+
+// Draw Boog's body
+void drawBoogBody() {
+  strokeWeight(2);
+  fill(green);
+  rect(-halfBodyWidth, -halfBodyHeight, bodyWidth, bodyHeight);
+}
+
+// Draw Boog's head
+void drawBoogHead() {
+  strokeWeight(2);
+  fill(green);
+  ellipse(-headRadius, -headDiameter, headDiameter, headDiameter);
+  
+  drawBoogAntennae();
+  drawBoogEyes();
+}
+
+// Draw Boog's antennae
+void drawBoogAntennae() {
+  
+  // antennae lines
+  line(-distanceToAntennaeTip, -headDiameter, -distanceToAntennaeBend, -distanceToAntennaeTop);
+  line(-distanceToAntennaeBend, -distanceToAntennaeTop, -distanceToAntennaeBase, -headDiameter);
+  line(distanceToAntennaeTip, -headDiameter, distanceToAntennaeBend, -distanceToAntennaeTop);
+  line(distanceToAntennaeBend, -distanceToAntennaeTop, distanceToAntennaeBase, -headDiameter);
+  
+  // antennae dots
+  strokeWeight(1);
+  fill(black);
+  ellipse(-distanceToAntennaeBallEdgeLeft, -distanceToAntennaeBallTop, antennaeBallDiameter, antennaeBallDiameter);
+  ellipse(distanceToAntennaeBallEdgeRight, -distanceToAntennaeBallTop, antennaeBallDiameter, antennaeBallDiameter);
+}
+
+// Draw Boog's eyes
+void drawBoogEyes() {
+  strokeWeight(1);
+  fill(black);
+  ellipse(-distanceToLeftEye, -distanceToTopOfEye, eyeWidth, eyeHeight);
+  ellipse(distanceToRightEye, -distanceToTopOfEye, eyeWidth, eyeHeight);
+}
+
+// Draw Boog's arms/legs
+void drawBoogLegs() {
+  fill(black);
+  
+  // top
+  strokeWeight(2);
+  line(-xBaseOfAllLegs, yBaseOfTopLeg, -xTipOfElbow, yTipOfElbow);
+  line(-xTipOfElbow, yTipOfElbow, -xTipOfTopLeg, yTipOfTopLeg);
+  strokeWeight(1);
+  ellipse(-xLeftTopFoot, yTopFoot, footDiameter, footDiameter);
+  strokeWeight(2);
+  line(xBaseOfAllLegs, yBaseOfTopLeg, xTipOfElbow, yTipOfElbow);
+  line(xTipOfElbow, yTipOfElbow, xTipOfTopLeg, yTipOfTopLeg);
+  strokeWeight(1);
+  ellipse(xRightTopFoot, yTopFoot, footDiameter, footDiameter);
+  
+  // middle
+  strokeWeight(2);
+  line(-xBaseOfAllLegs, yBaseOfMidLeg, -xTipOfMidAndBottomLeg, yTipOfMidLeg);
+  line(xBaseOfAllLegs, yBaseOfMidLeg, xTipOfMidAndBottomLeg, yTipOfMidLeg);
+  strokeWeight(1);
+  ellipse(-xLeftMidAndBottomFoot, yMidFoot, footDiameter, footDiameter);
+  ellipse(xRightMidAndBottomFoot, yMidFoot, footDiameter, footDiameter);
+  
+  // bottom
+  strokeWeight(2);
+  line(-xBaseOfAllLegs, yBaseOfBottomLeg, -xTipOfMidAndBottomLeg, yTipOfBottomLeg);
+  line(xBaseOfAllLegs, yBaseOfBottomLeg, xTipOfMidAndBottomLeg, yTipOfBottomLeg);
+  strokeWeight(1);
+  ellipse(-xLeftMidAndBottomFoot, yBottomFoot, footDiameter, footDiameter);
+  ellipse(xRightMidAndBottomFoot, yBottomFoot, footDiameter, footDiameter);  
+}
+ 

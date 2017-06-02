@@ -2,18 +2,88 @@
 Draws Boog, a bug-like creature
 */
 
-// establish colors
+/***************************************************
+****************************************************
+* Declare variables                             *
+****************************************************
+***************************************************/
+
+// The values listed below will be calculated later in the program
+// based on a small number of variables that are provided
+
+// Wings
+int halfUpperWingSpan;
+int quarterOfUpperWingHeight;
+int distanceToTopOfUpperWing;
+int distanceToBottomOfUpperWing;
+int halfLowerWingSpan;
+int eighthOfLowerWingSpan;
+int quarterOfLowerWingHeight;
+int distanceToTopOfLowerWing;
+int distanceToBottomOfLowerWing;
+int distanceToBottomOfLowerWingMid;
+int distanceToBottomOfLowerWingSmall;
+int halfLowerWingSpanMid;
+int halfLowerWingSpanSmall;
+    
+// Body
+int halfBodyWidth;
+int halfBodyHeight;
+
+// Head
+int headRadius;
+int distanceToAntennaeTip;
+int distanceToAntennaeBend;
+int distanceToAntennaeTop;
+int antennaeBallRadius;
+int distanceToAntennaeBallEdgeLeft;
+int distanceToAntennaeBallEdgeRight;
+int distanceToAntennaeBallTop;
+    
+// Eyes
+int eyeWidth;
+int eyeHeight;
+int distanceToTopOfEye;
+int distanceToLeftEye;
+int distanceToRightEye;
+
+// legs
+int xBaseOfAllLegs;
+int yBaseOfTopLeg;
+int xTipOfElbow;
+int yTipOfElbow;
+int xTipOfTopLeg;
+int yTipOfTopLeg;
+int yBaseOfMidLeg;
+int yBaseOfBottomLeg;
+int xTipOfMidAndBottomLeg;
+int yTipOfMidLeg;
+int yTipOfBottomLeg;
+
+// feet
+int footDiameter;
+int footRadius;
+int xLeftTopFoot;
+int xRightTopFoot;
+int yTopFoot;
+int xLeftMidAndBottomFoot;
+int xRightMidAndBottomFoot;
+int yMidFoot;
+int yBottomFoot;
+    
+/***************************************************
+****************************************************
+* Provided values that are used for drawing Boog   *
+****************************************************
+***************************************************/
+
+// Colors
 color black = #160f29;
 color yellow = #f7c331;
 color orange = #f7882f;
 color red = #bf221e;
 color green = #0dab76;
 
-/***************************************************
-****************************************************
-* Provided values that are used for drawing Boog   *
-****************************************************
-***************************************************/   
 // Wings
 int upperWingSpan = 60;
 int upperWingHeight = 40;
@@ -33,73 +103,7 @@ int antennaeBallDiameter = 6;
 
 /***************************************************
 ****************************************************
-* Calculated values that are used for drawing Boog *
-****************************************************
-***************************************************/
-// Wings
-int halfUpperWingSpan = upperWingSpan / 2;
-int quarterOfUpperWingHeight = upperWingHeight / 4;
-int distanceToTopOfUpperWing = quarterOfUpperWingHeight;
-int distanceToBottomOfUpperWing = 3 * quarterOfUpperWingHeight;
-int halfLowerWingSpan = lowerWingSpan / 2;
-int eighthOfLowerWingSpan = lowerWingSpan / 8;
-int quarterOfLowerWingHeight = lowerWingHeight / 4;
-int distanceToTopOfLowerWing = quarterOfLowerWingHeight;
-int distanceToBottomOfLowerWing = 3 * quarterOfLowerWingHeight;
-int distanceToBottomOfLowerWingMid = 2 * quarterOfLowerWingHeight;
-int distanceToBottomOfLowerWingSmall = quarterOfLowerWingHeight;
-int halfLowerWingSpanMid = eighthOfLowerWingSpan * 3;
-int halfLowerWingSpanSmall = eighthOfLowerWingSpan * 2;
-
-// Body
-int halfBodyWidth = bodyWidth / 2;
-int halfBodyHeight = bodyHeight / 2;
-
-// Head
-int headRadius = headDiameter / 2;
-int distanceToAntennaeTip = distanceToAntennaeBase + antennaeLength;
-int distanceToAntennaeBend = distanceToAntennaeBase + (antennaeLength/2);
-int distanceToAntennaeTop = headDiameter + antennaeHeight;
-int antennaeBallRadius = antennaeBallDiameter/2;
-int distanceToAntennaeBallEdgeLeft = distanceToAntennaeTip + antennaeBallRadius;
-int distanceToAntennaeBallEdgeRight = distanceToAntennaeTip - antennaeBallRadius;
-int distanceToAntennaeBallTop = headDiameter + antennaeBallRadius;
-
-// Eyes
-int eyeWidth = headRadius/2;
-int eyeHeight = headRadius;
-int distanceToTopOfEye = 3 * (headDiameter/4);
-int distanceToLeftEye = headDiameter/6 + eyeWidth;
-int distanceToRightEye = headDiameter/6;
-
-// legs
-int xBaseOfAllLegs = halfBodyWidth;
-int yBaseOfTopLeg = bodyHeight/20;
-int xTipOfElbow = halfBodyWidth + halfBodyWidth/2;
-int yTipOfElbow = yBaseOfTopLeg + halfBodyWidth;
-int xTipOfTopLeg = halfBodyWidth/2;
-int yTipOfTopLeg = yTipOfElbow + halfBodyWidth;
-int yBaseOfMidLeg = halfBodyHeight/2;
-int yBaseOfBottomLeg = halfBodyHeight;
-int xTipOfMidAndBottomLeg = halfBodyWidth + halfBodyWidth;
-int yTipOfMidLeg = yBaseOfMidLeg + halfBodyWidth;
-int yTipOfBottomLeg = yBaseOfBottomLeg + halfBodyWidth;
-
-// feet
-int footDiameter = antennaeBallDiameter;
-int footRadius = antennaeBallRadius;
-int xLeftTopFoot = xTipOfTopLeg + footRadius;
-int xRightTopFoot = xTipOfTopLeg - footRadius;
-int yTopFoot = yTipOfTopLeg - footRadius;
-int xLeftMidAndBottomFoot = xTipOfMidAndBottomLeg + footRadius;
-int xRightMidAndBottomFoot = xTipOfMidAndBottomLeg - footRadius;
-int yMidFoot = yTipOfMidLeg - footRadius;
-int yBottomFoot = yTipOfBottomLeg - footRadius;
-
-
-/***************************************************
-****************************************************
-* Main program                                     *
+* Setup                                            *
 ****************************************************
 ***************************************************/
 
@@ -113,7 +117,20 @@ void setup() {
   mouseX = width/2;
   mouseY = height/2;
   
+  // calculate derived values used for drawing Boog
+  calculateWingValues();
+  calculateBodyValues();
+  calculateHeadValues();
+  calculateEyeValues();
+  calculateLegValues();
+  calculateFootValues();
 }
+
+/***************************************************
+****************************************************
+* Draw                                             *
+****************************************************
+***************************************************/
 
 void draw() {
   background(255);
@@ -207,10 +224,94 @@ void draw() {
   
 }
 
+/***************************************************
+****************************************************
+* User input                                       *
+****************************************************
+***************************************************/
+
 void mousePressed() {
   
 }
 
 void keyPressed() {
   
+}
+
+/***************************************************
+****************************************************
+* Calculate derived Boog values                    *
+****************************************************
+***************************************************/
+
+// Wings
+void calculateWingValues() {
+  halfUpperWingSpan = upperWingSpan / 2;
+  quarterOfUpperWingHeight = upperWingHeight / 4;
+  distanceToTopOfUpperWing = quarterOfUpperWingHeight;
+  distanceToBottomOfUpperWing = 3 * quarterOfUpperWingHeight;
+  halfLowerWingSpan = lowerWingSpan / 2;
+  eighthOfLowerWingSpan = lowerWingSpan / 8;
+  quarterOfLowerWingHeight = lowerWingHeight / 4;
+  distanceToTopOfLowerWing = quarterOfLowerWingHeight;
+  distanceToBottomOfLowerWing = 3 * quarterOfLowerWingHeight;
+  distanceToBottomOfLowerWingMid = 2 * quarterOfLowerWingHeight;
+  distanceToBottomOfLowerWingSmall = quarterOfLowerWingHeight;
+  halfLowerWingSpanMid = eighthOfLowerWingSpan * 3;
+  halfLowerWingSpanSmall = eighthOfLowerWingSpan * 2;
+}
+
+// Body
+void calculateBodyValues() {
+  halfBodyWidth = bodyWidth / 2;
+  halfBodyHeight = bodyHeight / 2;
+}
+
+// Head
+void calculateHeadValues() {
+  headRadius = headDiameter / 2;
+  distanceToAntennaeTip = distanceToAntennaeBase + antennaeLength;
+  distanceToAntennaeBend = distanceToAntennaeBase + (antennaeLength/2);
+  distanceToAntennaeTop = headDiameter + antennaeHeight;
+  antennaeBallRadius = antennaeBallDiameter/2;
+  distanceToAntennaeBallEdgeLeft = distanceToAntennaeTip + antennaeBallRadius;
+  distanceToAntennaeBallEdgeRight = distanceToAntennaeTip - antennaeBallRadius;
+  distanceToAntennaeBallTop = headDiameter + antennaeBallRadius;
+}
+
+// Eyes
+void calculateEyeValues() {
+  eyeWidth = headRadius/2;
+  eyeHeight = headRadius;
+  distanceToTopOfEye = 3 * (headDiameter/4);
+  distanceToLeftEye = headDiameter/6 + eyeWidth;
+  distanceToRightEye = headDiameter/6;
+}
+
+// legs
+void calculateLegValues() {
+  xBaseOfAllLegs = halfBodyWidth;
+  yBaseOfTopLeg = bodyHeight/20;
+  xTipOfElbow = halfBodyWidth + halfBodyWidth/2;
+  yTipOfElbow = yBaseOfTopLeg + halfBodyWidth;
+  xTipOfTopLeg = halfBodyWidth/2;
+  yTipOfTopLeg = yTipOfElbow + halfBodyWidth;
+  yBaseOfMidLeg = halfBodyHeight/2;
+  yBaseOfBottomLeg = halfBodyHeight;
+  xTipOfMidAndBottomLeg = halfBodyWidth + halfBodyWidth;
+  yTipOfMidLeg = yBaseOfMidLeg + halfBodyWidth;
+  yTipOfBottomLeg = yBaseOfBottomLeg + halfBodyWidth;
+}
+
+// feet
+void calculateFootValues() {
+  footDiameter = antennaeBallDiameter;
+  footRadius = antennaeBallRadius;
+  xLeftTopFoot = xTipOfTopLeg + footRadius;
+  xRightTopFoot = xTipOfTopLeg - footRadius;
+  yTopFoot = yTipOfTopLeg - footRadius;
+  xLeftMidAndBottomFoot = xTipOfMidAndBottomLeg + footRadius;
+  xRightMidAndBottomFoot = xTipOfMidAndBottomLeg - footRadius;
+  yMidFoot = yTipOfMidLeg - footRadius;
+  yBottomFoot = yTipOfBottomLeg - footRadius;
 }

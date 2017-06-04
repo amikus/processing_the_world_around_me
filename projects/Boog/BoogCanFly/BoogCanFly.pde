@@ -164,10 +164,7 @@ void draw() {
   translate(boogX, boogY);
   
   // draw Boog
-  drawBoogWings();  
-  drawBoogBody();
-  drawBoogHead();
-  drawBoogLegs();
+  drawBoog();
   
   // determine Boog's current location
   updateBoogPosition();
@@ -287,6 +284,14 @@ void calculateFootValues() {
 ****************************************************
 ***************************************************/
 
+// Draw all of Boog
+void drawBoog() {
+  drawBoogWings();  
+  drawBoogBody();
+  drawBoogHead();
+  drawBoogLegs();
+}
+
 // Draw Boog's wings
 void drawBoogWings() {
   
@@ -384,6 +389,12 @@ void drawBoogLegs() {
   ellipse(xRightMidAndBottomFoot, yBottomFoot, footDiameter, footDiameter);  
 }
 
+/***************************************************
+****************************************************
+* Calculate Boog's position                        *
+****************************************************
+***************************************************/
+
 // Calculate Boog's new (x,y) position
 void updateBoogPosition() {
   
@@ -407,6 +418,12 @@ void updateBoogPosition() {
     boogX += flightSpeed;
   }
 }
+
+/***************************************************
+****************************************************
+* Draw Lasers                                      *
+****************************************************
+***************************************************/
 
 // When right mouse button is depressed, draw lasers from
 // Boog's eyes to the mouse pointer

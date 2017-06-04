@@ -142,10 +142,7 @@ void draw() {
   
   translate(mouseX, mouseY);
   
-  drawBoogWings();  
-  drawBoogBody();
-  drawBoogHead();
-  drawBoogLegs();
+  drawBoog();
   
 }
 
@@ -254,6 +251,14 @@ void calculateFootValues() {
 * Draw Boog                                        *
 ****************************************************
 ***************************************************/
+
+// Draw all of Boog
+void drawBoog() {
+  drawBoogWings();  
+  drawBoogBody();
+  drawBoogHead();
+  drawBoogLegs();
+}
 
 // Draw Boog's wings
 void drawBoogWings() {

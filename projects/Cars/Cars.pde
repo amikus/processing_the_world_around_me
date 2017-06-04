@@ -2,12 +2,24 @@
 A simple car maker
 */
 
-// Car variables
-int carX;         // x coordinate
-int carY;         // y coordinate
-int carSize;      // size
-int wheelOffset;  // position of wheels relative to car
+/********************
+* Variables         *
+********************/
+color blue = #2186f3;
+color lightBlue = #63c6ff;
+color darkBlue = #0069c0;
 
+color pink = #ff4081;
+color lightPink = #ff79b0;
+color darkPink = #c60055;
+
+color gray = #546e7a;
+color lightGray = #819ca9;
+color darkGray = #29434e;
+
+/********************
+* Setup             *
+********************/
 void setup() {
   size(500, 500);
   background(255);
@@ -15,48 +27,32 @@ void setup() {
   stroke(0);
 }
 
+/********************
+* Draw              *
+********************/
 void draw() {
+  
+  drawCar(250, 250, 100, 240);
+  drawCar(100, 100, 50, 175);
+  
+}
 
-  /********
-  * Car 1 *
-  ********/
+/***********************
+* Supporting Functions *
+************************/
+void drawCar(int carX, int carY, int carLength, color carColor) {
+   
+  // position of wheels relative to car
+  int wheelOffset = carLength/4;  
+
+  // body of car
+  fill(carColor);
+  rect(carX, carY, carLength, carLength/2);
   
-  // Establish variables for first car
-  carX = 250;
-  carY = 250;
-  carSize = 100;
-  wheelOffset = carSize/4;
-  
-  // Draw first car
-  fill(175);
-  rect(carX, carY, carSize, carSize/2);
-  
-  // Draw first car's wheels
-  fill(0);
+  // wheels of car
+  fill(200);
   rect(carX - wheelOffset, carY - wheelOffset, wheelOffset, wheelOffset/2);
   rect(carX + wheelOffset, carY - wheelOffset, wheelOffset, wheelOffset/2);
   rect(carX - wheelOffset, carY + wheelOffset, wheelOffset, wheelOffset/2);
   rect(carX + wheelOffset, carY + wheelOffset, wheelOffset, wheelOffset/2);
-
-  /********
-  * Car 2 *
-  ********/    
-    
-  // Establish variables for second car
-  carX = 100;
-  carY = 100;
-  carSize = 50;
-  wheelOffset = carSize/4;
-  
-  // Draw second car  
-  fill(175);
-  rect(carX, carY, carSize, carSize/2);
-  
-  // Draw first car's wheels
-  fill(0);
-  rect(carX - wheelOffset, carY - wheelOffset, wheelOffset, wheelOffset/2);
-  rect(carX + wheelOffset, carY - wheelOffset, wheelOffset, wheelOffset/2);
-  rect(carX - wheelOffset, carY + wheelOffset, wheelOffset, wheelOffset/2);
-  rect(carX + wheelOffset, carY + wheelOffset, wheelOffset, wheelOffset/2);
-  
 }

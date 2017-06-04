@@ -22,9 +22,10 @@ color darkGray = #29434e;
 ********************/
 void setup() {
   size(500, 500);
-  background(255);
+  background(blue);
   rectMode(CENTER);
   stroke(0);
+  strokeWeight(2);
 }
 
 /********************
@@ -32,8 +33,10 @@ void setup() {
 ********************/
 void draw() {
   
-  drawCar(250, 250, 100, 240);
-  drawCar(100, 100, 50, 175);
+  drawCar(250, 250, 100, pink);
+  drawCar(100, 100, 50, lightPink);
+  drawCar(150, 400, 150, lightBlue);
+  drawCar(350, 150, 80, lightGray);
   
 }
 
@@ -46,11 +49,13 @@ void drawCar(int carX, int carY, int carLength, color carColor) {
   int wheelOffset = carLength/4;  
 
   // body of car
+  strokeWeight(2);
   fill(carColor);
   rect(carX, carY, carLength, carLength/2);
   
   // wheels of car
-  fill(200);
+  strokeWeight(1);
+  fill(darkGray);
   rect(carX - wheelOffset, carY - wheelOffset, wheelOffset, wheelOffset/2);
   rect(carX + wheelOffset, carY - wheelOffset, wheelOffset, wheelOffset/2);
   rect(carX - wheelOffset, carY + wheelOffset, wheelOffset, wheelOffset/2);

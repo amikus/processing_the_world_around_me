@@ -3,6 +3,7 @@ A garden of flowers.
 */
 
 float horizonLine;
+float numberOfFlowers;
 
 /********************
 * Variables         *
@@ -46,6 +47,9 @@ void setup() {
   // dirt
   fill(brown);
   rect(width / 2, height * .7, width, height * .6);
+  
+  // reset numberOfFlowers
+  numberOfFlowers = 0;
 }
 
 /********************
@@ -62,26 +66,44 @@ void draw() {
 ************************/
 void drawFlower(float flowerHeight, color petalColor) {
 
+  drawTopRowFlower(flowerHeight, petalColor);
+  
+  numberOfFlowers++;
+  
+}
+
+void drawTopRowFlower(float flowerHeight, color petalColor) {
+
+  float yPosition = horizonLine;
+  
   stroke(darkGray);
   
   fill(green);
   
   // stem
   strokeWeight(width/300);
-  rect(100, horizonLine , flowerHeight/25, flowerHeight);
+  rect(100, yPosition , flowerHeight/25, flowerHeight);
 
   // leaves
   strokeWeight(width/300);
-  ellipse(100 - 10, horizonLine + 20, 20, 10);  // left leaf
-  ellipse(100 + 10, horizonLine + 10, 20, 10);  // right leaf
+  ellipse(100 - 10, yPosition + 20, 20, 10);  // left leaf
+  ellipse(100 + 10, yPosition + 10, 20, 10);  // right leaf
   
   // petals
   strokeWeight(width/250);
   fill(petalColor);
-  ellipse(100, horizonLine + 50 - flowerHeight, flowerHeight / 2, flowerHeight / 2);
+  ellipse(100, yPosition + 50 - flowerHeight, flowerHeight / 2, flowerHeight / 2);
   
   // center
   strokeWeight(width/250);
   fill(yellow);
-  ellipse(100, horizonLine + 50 - flowerHeight, flowerHeight / 5, flowerHeight / 5);
+  ellipse(100, yPosition + 50 - flowerHeight, flowerHeight / 5, flowerHeight / 5);  
+}
+
+void drawMidRowFlower(float flowerHeight, color petalColor) {
+  
+}
+
+void drawBottomRowFlower(float flowerHeight, color petalColor) {
+  
 }

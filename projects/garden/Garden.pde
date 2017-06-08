@@ -16,36 +16,32 @@ int rowNumber;
 
 
 /********************
-* Variables         *
+* Colors            *
 ********************/
+
+// outlining
+color darkGray = #29434e;
+
+// sky
 color blue = #2186f3;
-color lightBlue = #63c6ff;
-color darkBlue = #0069c0;
 
+// dirt
 color brown = #5b3f36;
-color lightBrown = #896a60;
-color darkBrown = #301810;
 
+// stem
+color green = #64dd17;
+
+// center of flower
+color yellow = #ffd600;
+
+// petals
 color pink = #ff4081;
 color lightPink = #ff79b0;
 color darkPink = #c60055;
-
-color gray = #546e7a;
-color lightGray = #819ca9;
-color darkGray = #29434e;
-
-color green = #64dd17;
-color lightGreen = #9cff57;
-color darkGreen = #1faa00;
-
-color yellow = #ffd600;
 color lightYellow = #ffff52;
-color darkYellow = #c7a500;
-
 color purple = #d500f9;
 color lightPurple = #ff5bff;
 color darkPurple = #9e00c5;
-
 color white = #eeeeee;
 
 /********************
@@ -82,19 +78,21 @@ void setup() {
 ********************/
 void draw() {
   
+  // row 1
   drawFlower(100, pink, 1, 1);
   drawFlower(150, lightPurple, 1, 2);
   drawFlower(125, lightYellow, 1, 3);
   drawFlower(200, darkPink, 1, 4);
   
+  // row 2
   drawFlower(175, purple, 2, 1);
   drawFlower(100, lightYellow, 2, 2);
   drawFlower(115, white, 2, 3);
   drawFlower(125, darkPurple, 2, 4);
   
-  
+  // row 3
   drawFlower(75, white, 3, 1);
-  drawFlower(115, pink, 3, 2);
+  drawFlower(115, lightPink, 3, 2);
   drawFlower(155, darkPink, 3, 3);
   drawFlower(100, lightYellow, 3, 4);
   

@@ -38,7 +38,7 @@ color darkYellow = #c7a500;
 void setup() {
   size(500, 500);
   horizonLine = height * .4;
-  rectMode(CENTER);
+  rectMode(CORNER);
   ellipseMode(CENTER);
   
   // sky
@@ -46,7 +46,7 @@ void setup() {
   
   // dirt
   fill(brown);
-  rect(width / 2, height * .7, width, height * .6);
+  rect(0, horizonLine, width, height);
   
   // reset numberOfFlowers
   numberOfFlowers = 0;
@@ -74,7 +74,21 @@ void drawFlower(float flowerHeight, color petalColor) {
 
 void drawTopRowFlower(float flowerHeight, color petalColor) {
 
-  float yPosition = horizonLine;
+  // flower dimensions
+  float stemWidth = flowerHeight/25;
+  float leafWidth = flowerHeight/5;
+  float halfLeafWidth = leafWidth/2;
+  float leafHeight = leafWidth/2;
+  float petalSize = flowerHeight/2;
+  float petalCenterSize = flowerHeight/5;
+  
+  // flower positions
+  float yBaseOfStem = height * .5;
+  float yTopOfStem = yBaseOfStem - flowerHeight;
+  float xLeftLeafCenter = 100 - halfLeafWidth;
+  float yLeftLeafCenter = yBaseOfStem - (flowerHeight * .3);
+  float xRightLeafCenter = 100 + halfLeafWidth + stemWidth;
+  float yRightLeafCenter = yBaseOfStem - (flowerHeight * .4);
   
   stroke(darkGray);
   
@@ -82,22 +96,22 @@ void drawTopRowFlower(float flowerHeight, color petalColor) {
   
   // stem
   strokeWeight(width/300);
-  rect(100, yPosition , flowerHeight/25, flowerHeight);
+  rect(100, yTopOfStem, stemWidth, flowerHeight);
 
   // leaves
   strokeWeight(width/300);
-  ellipse(100 - 10, yPosition + 20, 20, 10);  // left leaf
-  ellipse(100 + 10, yPosition + 10, 20, 10);  // right leaf
+  ellipse(xLeftLeafCenter, yLeftLeafCenter, leafWidth, leafHeight);  // left leaf
+  ellipse(xRightLeafCenter, yRightLeafCenter, leafWidth, leafHeight);  // right leaf
   
   // petals
   strokeWeight(width/250);
   fill(petalColor);
-  ellipse(100, yPosition + 50 - flowerHeight, flowerHeight / 2, flowerHeight / 2);
+  ellipse(100, yTopOfStem, petalSize, petalSize);
   
   // center
   strokeWeight(width/250);
   fill(yellow);
-  ellipse(100, yPosition + 50 - flowerHeight, flowerHeight / 5, flowerHeight / 5);  
+  ellipse(100, yTopOfStem, petalCenterSize, petalCenterSize);  
 }
 
 void drawMidRowFlower(float flowerHeight, color petalColor) {

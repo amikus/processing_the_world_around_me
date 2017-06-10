@@ -1,6 +1,6 @@
 # processing_the_world_around_me
 
-The purpose of this repo is to document the concepts and techniques I am learning and and exploring while reading Daniel Shiffman's Processing books. The books I am reading are Learning Processing and The Nature of Code. I like Shiffman's temperament, and I enjoy his writing style. I've started The Nature of Code a few times, but I decided this time to backtrack and read his beginner's guide to the Processing language as well.
+The purpose of this repo is to document the concepts and techniques I am learning and exploring while reading Daniel Shiffman's Processing books. The books I am reading are Learning Processing and The Nature of Code. I like Shiffman's temperament, and I enjoy his writing style. I've started The Nature of Code a few times, but I decided this time to backtrack and read his beginner's guide to the Processing language as well.
 
 At first, I was hesitant to post these exercises in public. Knowing that future employeres may glance at my Github account, I worried that they would see these exercises as evidence of simple-mindedness and poorly developed skills. "Why would we hire a guy who's still learning how loops work," I could hear them saying, laughing in a conference room somewhere future.
 
@@ -16,6 +16,6 @@ So while I will take pride in finding solutions quickly, and during interviews I
   
 &nbsp;&nbsp;&nbsp;&nbsp;[I do not seek, I find.]  
 
-In this space, without shame or reservation, I say:
+In this space, without shame or reservation:
 
 &nbsp;&nbsp;&nbsp;&nbsp;Je ne trouve pas, je cherche.  

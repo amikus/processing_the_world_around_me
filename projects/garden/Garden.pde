@@ -10,17 +10,23 @@ float rowSpacing;
 
 int numberOfFlowers;
 
-// column and row number, used for placing flowers
-int columnNumber;
-int rowNumber;
-
+// Flowers
+Flower flowerOne;
+Flower flowerTwo;
+Flower flowerThree;
+Flower flowerFour;
+Flower flowerFive;
+Flower flowerSix;
+Flower flowerSeven;
+Flower flowerEight;
+Flower flowerNine;
+Flower flowerTen;
+Flower flowerEleven;
+Flower flowerTwelve;
 
 /********************
 * Colors            *
 ********************/
-
-// outlining
-color darkGray = #29434e;
 
 // sky
 color blue = #2186f3;
@@ -28,13 +34,7 @@ color blue = #2186f3;
 // dirt
 color brown = #5b3f36;
 
-// stem
-color green = #64dd17;
-
-// center of flower
-color yellow = #ffd600;
-
-// petals
+// colors that can be passed in to color flowers
 color pink = #ff4081;
 color lightPink = #ff79b0;
 color darkPink = #c60055;
@@ -62,15 +62,25 @@ void setup() {
   columnSpacing = gardenWidth/5;
   rowSpacing = gardenHeight/4;
   
-  
   // dirt
   fill(brown);
   rect(0, horizonLine, width, height * .6);
   
-  // reset number of flowers, row, and column
-  numberOfFlowers = 0;
-  rowNumber = 0;
-  columnNumber = 0;
+  // row 1
+  flowerOne = new Flower(100, pink, 1, 1);
+  flowerTwo = new Flower(150, lightPurple, 1, 2);
+  flowerThree = new Flower(125, lightYellow, 1, 3);
+  flowerFour = new Flower(200, darkPink, 1, 4);
+  // row 2
+  flowerFive = new Flower(175, purple, 2, 1);
+  flowerSix = new Flower(100, lightYellow, 2, 2);
+  flowerSeven = new Flower(115, white, 2, 3);
+  flowerEight = new Flower(125, darkPurple, 2, 4);
+  // row 3
+  flowerNine = new Flower(75, white, 3, 1);
+  flowerTen = new Flower(115, lightPink, 3, 2);
+  flowerEleven = new Flower(155, darkPink, 3, 3);
+  flowerTwelve = new Flower(100, lightYellow, 3, 4);
 }
 
 /********************
@@ -79,71 +89,19 @@ void setup() {
 void draw() {
   
   // row 1
-  drawFlower(100, pink, 1, 1);
-  drawFlower(150, lightPurple, 1, 2);
-  drawFlower(125, lightYellow, 1, 3);
-  drawFlower(200, darkPink, 1, 4);
-  
+  flowerOne.display();
+  flowerTwo.display();
+  flowerThree.display();
+  flowerFour.display();
   // row 2
-  drawFlower(175, purple, 2, 1);
-  drawFlower(100, lightYellow, 2, 2);
-  drawFlower(115, white, 2, 3);
-  drawFlower(125, darkPurple, 2, 4);
-  
+  flowerFive.display();
+  flowerSix.display();
+  flowerSeven.display();
+  flowerEight.display();
   // row 3
-  drawFlower(75, white, 3, 1);
-  drawFlower(115, lightPink, 3, 2);
-  drawFlower(155, darkPink, 3, 3);
-  drawFlower(100, lightYellow, 3, 4);
-  
-}
-
-/***********************
-* Supporting Functions *
-************************/
-void drawFlower(float flowerHeight, color petalColor, int rowNumber, int columnNumber) { 
-    
-  // flower dimensions
-  float stemWidth = flowerHeight/25;
-  float leafWidth = flowerHeight/5;
-  float halfLeafWidth = leafWidth/2;
-  float leafHeight = leafWidth/2;
-  float petalSize = flowerHeight/2;
-  float petalCenterSize = flowerHeight/5;
-  
-  // flower positions
-  float xBaseOfStem = columnSpacing * columnNumber;
-  if (rowNumber == 1) xBaseOfStem += (width/10 - width/25);
-  if (rowNumber == 2) xBaseOfStem -= (width/25);
-  if (rowNumber == 3) xBaseOfStem -= (width/10);
-  float yBaseOfStem = horizonLine + (rowSpacing * rowNumber);
-  float yTopOfStem = yBaseOfStem - flowerHeight;
-  float xLeftLeafCenter = xBaseOfStem - halfLeafWidth;
-  float yLeftLeafCenter = yBaseOfStem - (flowerHeight * .3);
-  float xRightLeafCenter = xBaseOfStem + halfLeafWidth + stemWidth;
-  float yRightLeafCenter = yBaseOfStem - (flowerHeight * .4);
-
-  stroke(darkGray);
-
-  fill(green);
-  
-  // stem
-  strokeWeight(width/300);
-  rect(xBaseOfStem, yTopOfStem, stemWidth, flowerHeight);
-
-  // leaves
-  strokeWeight(width/300);
-  ellipse(xLeftLeafCenter, yLeftLeafCenter, leafWidth, leafHeight);  // left leaf
-  ellipse(xRightLeafCenter, yRightLeafCenter, leafWidth, leafHeight);  // right leaf
-  
-  // petals
-  strokeWeight(width/250);
-  fill(petalColor);
-  ellipse(xBaseOfStem, yTopOfStem, petalSize, petalSize);
-  
-  // center
-  strokeWeight(width/250);
-  fill(yellow);
-  ellipse(xBaseOfStem, yTopOfStem, petalCenterSize, petalCenterSize);
+  flowerNine.display();
+  flowerTen.display();
+  flowerEleven.display();
+  flowerTwelve.display();
   
 }

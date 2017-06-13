@@ -6,7 +6,6 @@ class Boog {
   /**************
   * Variables   *
   **************/ 
-
 // The values listed below will be calculated later in the program
 // based on a small number of variables that are provided
 
@@ -45,6 +44,10 @@ int eyeHeight;
 int distanceToTopOfEye;
 int distanceToLeftEye;
 int distanceToRightEye;
+int xLeftEyeCenter;
+int yLeftEyeCenter;
+int xRightEyeCenter;
+int yRightEyeCenter;
 
 // legs
 int xBaseOfAllLegs;
@@ -100,8 +103,18 @@ int antennaeHeight = 10;
 int distanceToAntennaeBase = 10;
 int antennaeBallDiameter = 6;
 
-float xPosition;
-float yPosition;
+// Position
+float xPosition, yPosition;            // x and y coordinates
+float wiggleFactor = 1;          // how much Boog wiggles
+
+// Flight
+boolean isFlying = false;  // whether Boog is flying
+float flightSpeed = 1;         // flying speed
+
+// Edge detection
+// Currently, these values need to provided, but ideally these would be calculated
+float hitboxHalfWidth = 40;      // half of Boog's width, used for edge detection
+float hitboxHalfHeight = 60;     // half of Boog's height, used for edge detection
 
   /**************
   * Constructor *
@@ -126,83 +139,88 @@ float yPosition;
   ***************************************************/
   
   // Wings
-  void calculateWingValues() {
-    halfUpperWingSpan = upperWingSpan / 2;
-    quarterOfUpperWingHeight = upperWingHeight / 4;
-    distanceToTopOfUpperWing = quarterOfUpperWingHeight;
-    distanceToBottomOfUpperWing = 3 * quarterOfUpperWingHeight;
-    halfLowerWingSpan = lowerWingSpan / 2;
-    eighthOfLowerWingSpan = lowerWingSpan / 8;
-    quarterOfLowerWingHeight = lowerWingHeight / 4;
-    distanceToTopOfLowerWing = quarterOfLowerWingHeight;
-    distanceToBottomOfLowerWing = 3 * quarterOfLowerWingHeight;
-    distanceToBottomOfLowerWingMid = 2 * quarterOfLowerWingHeight;
-    distanceToBottomOfLowerWingSmall = quarterOfLowerWingHeight;
-    halfLowerWingSpanMid = eighthOfLowerWingSpan * 3;
-    halfLowerWingSpanSmall = eighthOfLowerWingSpan * 2;
-  }
+void calculateWingValues() {
+  halfUpperWingSpan = upperWingSpan / 2;
+  quarterOfUpperWingHeight = upperWingHeight / 4;
+  distanceToTopOfUpperWing = quarterOfUpperWingHeight;
+  distanceToBottomOfUpperWing = 3 * quarterOfUpperWingHeight;
+  halfLowerWingSpan = lowerWingSpan / 2;
+  eighthOfLowerWingSpan = lowerWingSpan / 8;
+  quarterOfLowerWingHeight = lowerWingHeight / 4;
+  distanceToTopOfLowerWing = quarterOfLowerWingHeight;
+  distanceToBottomOfLowerWing = 3 * quarterOfLowerWingHeight;
+  distanceToBottomOfLowerWingMid = 2 * quarterOfLowerWingHeight;
+  distanceToBottomOfLowerWingSmall = quarterOfLowerWingHeight;
+  halfLowerWingSpanMid = eighthOfLowerWingSpan * 3;
+  halfLowerWingSpanSmall = eighthOfLowerWingSpan * 2;
+}
+
+// Body
+void calculateBodyValues() {
+  halfBodyWidth = bodyWidth / 2;
+  halfBodyHeight = bodyHeight / 2;
+}
+
+// Head
+void calculateHeadValues() {
+  headRadius = headDiameter / 2;
+  calculateAntennaeValues();
+  calculateEyeValues();
+}
+
+void calculateAntennaeValues() {
+  distanceToAntennaeTip = distanceToAntennaeBase + antennaeLength;
+  distanceToAntennaeBend = distanceToAntennaeBase + (antennaeLength/2);
+  distanceToAntennaeTop = headDiameter + antennaeHeight;
+  antennaeBallRadius = antennaeBallDiameter/2;
+  distanceToAntennaeBallEdgeLeft = distanceToAntennaeTip + antennaeBallRadius;
+  distanceToAntennaeBallEdgeRight = distanceToAntennaeTip - antennaeBallRadius;
+  distanceToAntennaeBallTop = headDiameter + antennaeBallRadius;
+}
+
+// Eyes
+void calculateEyeValues() {
+  eyeWidth = headRadius/2;
+  eyeHeight = headRadius;
+  distanceToTopOfEye = 3 * (headDiameter/4);
+  distanceToLeftEye = headDiameter/6 + eyeWidth;
+  distanceToRightEye = headDiameter/6;
+  xLeftEyeCenter = distanceToLeftEye - eyeWidth/2;
+  yLeftEyeCenter = distanceToTopOfEye - eyeHeight/2;
+  xRightEyeCenter = distanceToRightEye + eyeWidth/2;
+  yRightEyeCenter = distanceToTopOfEye - eyeHeight/2;
+}
+
+// legs
+void calculateLegValues() {
+  xBaseOfAllLegs = halfBodyWidth;
+  yBaseOfTopLeg = bodyHeight/20;
+  xTipOfElbow = halfBodyWidth + halfBodyWidth/2;
+  yTipOfElbow = yBaseOfTopLeg + halfBodyWidth;
+  xTipOfTopLeg = halfBodyWidth/2;
+  yTipOfTopLeg = yTipOfElbow + halfBodyWidth;
+  yBaseOfMidLeg = halfBodyHeight/2;
+  yBaseOfBottomLeg = halfBodyHeight;
+  xTipOfMidAndBottomLeg = halfBodyWidth + halfBodyWidth;
+  yTipOfMidLeg = yBaseOfMidLeg + halfBodyWidth;
+  yTipOfBottomLeg = yBaseOfBottomLeg + halfBodyWidth;
   
-  // Body
-  void calculateBodyValues() {
-    halfBodyWidth = bodyWidth / 2;
-    halfBodyHeight = bodyHeight / 2;
-  }
-  
-  // Head
-  void calculateHeadValues() {
-    headRadius = headDiameter / 2;
-    calculateAntennaeValues();
-    calculateEyeValues();
-  }
-  
-  void calculateAntennaeValues() {
-    distanceToAntennaeTip = distanceToAntennaeBase + antennaeLength;
-    distanceToAntennaeBend = distanceToAntennaeBase + (antennaeLength/2);
-    distanceToAntennaeTop = headDiameter + antennaeHeight;
-    antennaeBallRadius = antennaeBallDiameter/2;
-    distanceToAntennaeBallEdgeLeft = distanceToAntennaeTip + antennaeBallRadius;
-    distanceToAntennaeBallEdgeRight = distanceToAntennaeTip - antennaeBallRadius;
-    distanceToAntennaeBallTop = headDiameter + antennaeBallRadius;
-  }
-  
-  // Eyes
-  void calculateEyeValues() {
-    eyeWidth = headRadius/2;
-    eyeHeight = headRadius;
-    distanceToTopOfEye = 3 * (headDiameter/4);
-    distanceToLeftEye = headDiameter/6 + eyeWidth;
-    distanceToRightEye = headDiameter/6;
-  }
-  
-  // legs
-  void calculateLegValues() {
-    xBaseOfAllLegs = halfBodyWidth;
-    yBaseOfTopLeg = bodyHeight/20;
-    xTipOfElbow = halfBodyWidth + halfBodyWidth/2;
-    yTipOfElbow = yBaseOfTopLeg + halfBodyWidth;
-    xTipOfTopLeg = halfBodyWidth/2;
-    yTipOfTopLeg = yTipOfElbow + halfBodyWidth;
-    yBaseOfMidLeg = halfBodyHeight/2;
-    yBaseOfBottomLeg = halfBodyHeight;
-    xTipOfMidAndBottomLeg = halfBodyWidth + halfBodyWidth;
-    yTipOfMidLeg = yBaseOfMidLeg + halfBodyWidth;
-    yTipOfBottomLeg = yBaseOfBottomLeg + halfBodyWidth;
-    
-    calculateFootValues();
-  }
-  
-  // feet
-  void calculateFootValues() {
-    footDiameter = antennaeBallDiameter;
-    footRadius = antennaeBallRadius;
-    xLeftTopFoot = xTipOfTopLeg + footRadius;
-    xRightTopFoot = xTipOfTopLeg - footRadius;
-    yTopFoot = yTipOfTopLeg - footRadius;
-    xLeftMidAndBottomFoot = xTipOfMidAndBottomLeg + footRadius;
-    xRightMidAndBottomFoot = xTipOfMidAndBottomLeg - footRadius;
-    yMidFoot = yTipOfMidLeg - footRadius;
-    yBottomFoot = yTipOfBottomLeg - footRadius;
-  } 
+  calculateFootValues();
+}
+
+// feet
+void calculateFootValues() {
+  footDiameter = antennaeBallDiameter;
+  footRadius = antennaeBallRadius;
+  xLeftTopFoot = xTipOfTopLeg + footRadius;
+  xRightTopFoot = xTipOfTopLeg - footRadius;
+  yTopFoot = yTipOfTopLeg - footRadius;
+  xLeftMidAndBottomFoot = xTipOfMidAndBottomLeg + footRadius;
+  xRightMidAndBottomFoot = xTipOfMidAndBottomLeg - footRadius;
+  yMidFoot = yTipOfMidLeg - footRadius;
+  yBottomFoot = yTipOfBottomLeg - footRadius;
+}
+ 
   
   // Display Boog to the screen
   void display() {
@@ -212,7 +230,7 @@ float yPosition;
     stroke(black);
     strokeWeight(1);
     
-    translate(mouseX, mouseY);
+    translate(xPosition, yPosition);
     
     drawBoog();
   }
@@ -321,4 +339,41 @@ void drawBoogLegs() {
   ellipse(-xLeftMidAndBottomFoot, yBottomFoot, footDiameter, footDiameter);
   ellipse(xRightMidAndBottomFoot, yBottomFoot, footDiameter, footDiameter);  
 }
+
+// Calculate Boog's new (x,y) position
+void updatePosition() {
+  
+  // if Boog collides with either edge of the window, reverse his speed
+  if (xPosition <= hitboxHalfWidth || xPosition >= width-hitboxHalfWidth) {
+    flightSpeed = -flightSpeed;
+  }
+  
+  // don't allow Boog to move beyond the top or bottom of the window
+  if (yPosition <= hitboxHalfHeight) {
+    yPosition = hitboxHalfHeight;
+  } else if (yPosition >= height-hitboxHalfHeight) {
+    yPosition = height-hitboxHalfHeight;
+  }
+  
+  // update Boog's y position randomly, based on degree of wiggle
+  yPosition += random(-wiggleFactor, wiggleFactor);
+  
+  // only update Boog's x position if flight is turned on
+  if (isFlying) {
+    xPosition += flightSpeed;
+  }
+}
+
+// When right mouse button is depressed, draw lasers from
+// Boog's eyes to the mouse pointer
+void fireLaser() {
+  
+  if (mousePressed && mouseButton == RIGHT) {
+    stroke(red);
+    line (-xLeftEyeCenter, -yLeftEyeCenter, mouseX-xPosition, mouseY-yPosition);
+    line (xRightEyeCenter, -yRightEyeCenter, mouseX-xPosition, mouseY-yPosition);
+  }  
+  
+}
+
 }

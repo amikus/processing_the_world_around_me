@@ -19,7 +19,7 @@ void setup() {
   float xPosition = width/2;
   float yPosition = height * .45;
   
-  boog = new Boog(xPosition, yPosition);
+  boog = new Boog(xPosition, yPosition, 1, false, 1);
 }
 
 /***************
@@ -37,9 +37,6 @@ void draw() {
   
   // determine Boog's current location
   boog.updatePosition();
-  
-  // fire a laser from Boog's eyes when right mouse button is depressed
-  boog.fireLaser();
   
 }
 

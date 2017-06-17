@@ -7,10 +7,6 @@ class Boog {
   /**************
   * Variables   *
   **************/ 
-
-  // The values listed below will be calculated later in the program
-  // based on a small number of variables that are provided
-
   
   // Colors
   color black = #160f29;
@@ -19,9 +15,11 @@ class Boog {
   color red = #bf221e;
   color green = #0dab76;
   
+  // Positions
   float xPosition;
   float yPosition;
 
+  // Objects
   Body body;
 
   /**************
@@ -40,10 +38,6 @@ class Boog {
   /**************
   * Methods     *
   ***************/
-
-  /***************************************************
-  * Draw Boog                                        *
-  ***************************************************/
   
   // Display Boog to the screen
   void display() {

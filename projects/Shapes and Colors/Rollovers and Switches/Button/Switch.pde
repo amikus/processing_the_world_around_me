@@ -13,6 +13,10 @@ class Switch{
   
   color activeColor;      // color of switch when it's in active state
   color inactiveColor;    // color of switch when it's in inactive state
+
+  // colors used for outlining shapes
+  color darkGray = color(40, 40, 40, 255);
+  color lightGray = color(200, 200, 200, 255);
   
   /**************
   * Constructor *

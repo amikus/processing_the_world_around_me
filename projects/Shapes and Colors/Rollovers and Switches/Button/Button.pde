@@ -5,8 +5,6 @@ A button that can be activated or deactivated by clicking on it
 // colors
 color blue = color(0, 150, 240, 255);
 color green = color(0, 200, 0, 255);
-color darkGray = color(40, 40, 40, 255);
-color lightGray = color(200, 200, 200, 255);
 
 Switch switchOne;
 

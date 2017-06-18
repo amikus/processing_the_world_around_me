@@ -9,3 +9,5 @@ To explore the fundamentals of moveable, relatable entities, I'm going to design
 First, a quick sketch to get some simple cars down on... paper? Screen, I guess.
 
 ![A few simple cars](Cars.gif)
+
+The sketch generates an array of cars of random colors, coordinates, sizes, and speeds. Each of these random values is constrained, and I may want to come back in the future and allow the user to modify these constraints. I have also thought about confining the cars to individual lanes. If I were to do that, I'd be close to the engine for a Frogger-style clone.

@@ -18,11 +18,8 @@ A simple car maker
   color lightGray = #819ca9;
   color darkGray = #29434e;
 
-  // Cars
-  Car carOne;
-  Car carTwo;
-  Car carThree;
-  Car carFour;
+  color[] colorArray = {lightPink, pink, lightGray, lightBlue};
+  Car[] carArray = new Car[4];
   
 /********************
 * Setup             *
@@ -31,10 +28,10 @@ void setup() {
   size(500, 500);
   background(blue);
   
-  carOne = new Car(lightPink, 100, 100, 50, 1);
-  carTwo = new Car(pink, 250, 250, 100, 1.5);
-  carThree = new Car(lightGray, 350, 150, 80, 1.25);
-  carFour = new Car(lightBlue, 150, 400, 150, .75);
+  // initialize cars with random characteristics
+  for (int i = 0; i < carArray.length; i++) {
+    carArray[i] = new Car(colorArray[int(random(0, 3))], random(0, 500), random(0, 500), random(0, 200), random(.5, 1.5));  
+  }
   
 }
 
@@ -45,15 +42,10 @@ void draw() {
   
   background(blue);
   
-  // update car positions
-  carOne.drive();
-  carTwo.drive();
-  carThree.drive();
-  carFour.drive();
+  // loop through car array, updating their positions and displaying them to screen
+  for (int i = 0; i < carArray.length; i++) {
+    carArray[i].drive();
+    carArray[i].display();
+  }
   
-  // draw the cars
-  carOne.display();
-  carTwo.display();
-  carThree.display();
-  carFour.display();
 }

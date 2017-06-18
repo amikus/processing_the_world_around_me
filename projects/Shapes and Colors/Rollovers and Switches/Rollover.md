@@ -13,3 +13,5 @@ The sketch called Rollover contains two simples shapes--a rectancle and a circle
 The Button sketch contains a single button in the center of the screen, and this button toggles between two states when clicked.
 
 ![A button that can be turned on and off](Button/Button.gif)
+
+These objects can be improved in the future through the use of inheritance and interfaces, but I will save those improvements for later.

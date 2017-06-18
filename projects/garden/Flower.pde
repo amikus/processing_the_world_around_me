@@ -26,7 +26,9 @@ class Flower {
   int rowNumber;
   
   // flower positions
-  float xBaseOfStem;;
+  float rowSpacing;
+  float columnSpacing;
+  float xBaseOfStem;
   float yBaseOfStem;
   float yTopOfStem;
   float xLeftLeafCenter;
@@ -37,7 +39,7 @@ class Flower {
   /**************
   * Constructor *
   ***************/
-  Flower(float flowerHeight, color petalColor, int rowNumber, int columnNumber) {
+  Flower(float flowerHeight, color petalColor, int rowNumber, int columnNumber, float rowSpacing, float columnSpacing) {
   
     this.petalColor = petalColor;
     
@@ -51,9 +53,12 @@ class Flower {
     this.petalCenterSize = flowerHeight/5;
     
     // flower positions
+    this.rowSpacing = rowSpacing;
+    this.columnSpacing = columnSpacing;
+    
     this.xBaseOfStem = columnSpacing * columnNumber;
       if (rowNumber == 1) xBaseOfStem += (width/10 - width/25);
-      if (rowNumber == 2) xBaseOfStem -= (width/25);
+      if (rowNumber == 2) xBaseOfStem -= width/50;
       if (rowNumber == 3) xBaseOfStem -= (width/10);
     yBaseOfStem = horizonLine + (rowSpacing * rowNumber);
     yTopOfStem = yBaseOfStem - flowerHeight;

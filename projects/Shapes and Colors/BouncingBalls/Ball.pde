@@ -9,7 +9,6 @@ class Ball {
   float xPosition, yPosition, diameter, radius;
   float horizontalSpeed, verticalSpeed;
   float minimumBounce, minimumRoll;  // thresholds below which ball should stop moving
-  boolean ballCanFall;               // when true, ball can continue to fall
   float gravity;                     // gravity of environment in which ball is bouncing
   Surface surface;                   // surface off which ball will bounce
   
@@ -17,9 +16,7 @@ class Ball {
   * Constructor *
   ***************/ 
   
-  Ball(float diameter, float gravity, Surface surface) {
-    // ball is motionless when created
-    this.ballCanFall = false;
+  Ball(float diameter, float xPosition, float yPosition, float gravity, Surface surface) {
     
     this.gravity = gravity;
     this.surface = surface;
@@ -27,8 +24,8 @@ class Ball {
     this.diameter = diameter;
     this.radius = diameter/2;
     
-    this.xPosition = this.radius;
-    this.yPosition = this.radius;
+    this.xPosition = xPosition;
+    this.yPosition = yPosition;
     
     this.horizontalSpeed = 2;
     this.verticalSpeed = 1;
@@ -37,6 +34,7 @@ class Ball {
     // physics knowledge too poor at this time to develop more fully
     this.minimumBounce = .5;
     this.minimumRoll = .001;
+    
   }
   
   /**************
@@ -56,16 +54,14 @@ class Ball {
   
   // update the ball's position
   void updatePosition() {
-    
-    if (ballCanFall) {
       
-      // apply physics forces to ball
-      applyForces();
-        
-      // update x and y positions
-      xPosition += horizontalSpeed;
-      yPosition += verticalSpeed;
-    }
+    // apply physics forces to ball
+    applyForces();
+      
+    // update x and y positions
+    xPosition += horizontalSpeed;
+    yPosition += verticalSpeed;
+
   }
   
   // apply physical forces to ball

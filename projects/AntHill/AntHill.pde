@@ -8,9 +8,13 @@ While they are holding food in their hands, they leave a dissipating trail behin
 /********************
 * Variables         *
 ********************/
+// home and food
 Point homeLocation;
+Point foodLocation;
 Home home;
+Food food;
 
+// colors
 color pink = #ff79b0;      // used for food
 color blue = #6ec6ff;      // used for home
 color yellow = #ffff52;    // pheremone trail
@@ -25,8 +29,13 @@ void setup() {
   background(darkGray);
   size(500, 500);
   
+  // establish locations for home and food
   homeLocation = new Point(0, 420);
+  foodLocation = new Point(420, 0);
+  
+  // spawn home and food
   home = new Home(homeLocation, blue, 80);
+  food = new Food(foodLocation, pink, 80);
 }
 
 /********************
@@ -36,5 +45,6 @@ void draw() {
  
   background(darkGray);
   home.display();
+  food.display();
   
 }

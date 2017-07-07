@@ -3,7 +3,7 @@ class Home{
   /**************
   * Variables   *
   **************/
-  Point location;     // x,y coordinate of home (top left corner)
+  Point location;     // x,y coordinate of home (bottom left corner)
   color homeColor;    // color of home
   float radius;       // radius of home
   float diameter;     // diameter of home

@@ -11,16 +11,22 @@ While they are holding food in their hands, they leave a dissipating trail behin
 Point homeLocation;
 Home home;
 
+color pink = #ff79b0;      // used for food
+color blue = #6ec6ff;      // used for home
+color yellow = #ffff52;    // pheremone trail
+color darkGray = #29434e;  // background
+color lightGray = #819ca9; // ants
+
 /********************
 * Setup             *
 ********************/
 void setup() {
   
-  background(0);
+  background(darkGray);
   size(500, 500);
   
   homeLocation = new Point(0, 420);
-  home = new Home(homeLocation, 255, 80);
+  home = new Home(homeLocation, blue, 80);
 }
 
 /********************
@@ -28,7 +34,7 @@ void setup() {
 ********************/
 void draw() {
  
-  background(0);
+  background(darkGray);
   home.display();
   
 }

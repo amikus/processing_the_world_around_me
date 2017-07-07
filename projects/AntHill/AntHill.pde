@@ -9,7 +9,6 @@ While they are holding food in their hands, they leave a dissipating trail behin
 * Variables         *
 ********************/
 
-
 /********************
 * Setup             *
 ********************/

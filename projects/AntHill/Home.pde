@@ -23,7 +23,7 @@ class Home{
   **************/  
   // display home on screen
   void display() {
-      ellipseMode(CORNER);
+      ellipseMode(CENTER);
       stroke(homeColor);
       fill(homeColor);
       ellipse(location.xCoordinate, location.yCoordinate, diameter, diameter); 

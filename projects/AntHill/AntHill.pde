@@ -63,26 +63,20 @@ void draw() {
 // this is currently being calculated relative to window size
 Point getHomeLocation(float homeSize) {
   
-  float homeOffset = height / 50;
-  
   // bottom left corner of screen
-  float xPosition = homeOffset;
-  float yPosition = height - homeSize - homeOffset;
+  float xPosition = homeSize;
+  float yPosition = height - homeSize;
   
   return new Point(xPosition, yPosition);
-  
 }
 
 // determine location of food based on size
 // this is currently being calculated relative to window size
 Point getFoodLocation(float foodSize) {
   
-  float foodOffset = height / 50;
-  
   // top right corner of screen
-  float xPosition = width - foodSize - foodOffset;
-  float yPosition = foodOffset;
+  float xPosition = width - foodSize;
+  float yPosition = foodSize;
   
   return new Point(xPosition, yPosition);  
-  
 }

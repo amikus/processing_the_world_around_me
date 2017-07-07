@@ -26,7 +26,7 @@ class Food{
   
   // display food to screen
   void display() {
-    ellipseMode(CORNER);
+    ellipseMode(CENTER);
     stroke(foodColor);
     fill(foodColor);
     ellipse(location.xCoordinate, location.yCoordinate, diameter, diameter);       

@@ -13,6 +13,10 @@ Point homeLocation;
 Point foodLocation;
 Home home;
 Food food;
+float homeSize;
+float foodSize;
+float homeOffset;
+float foodOffset;
 
 // colors
 color pink = #ff79b0;      // used for food
@@ -28,14 +32,20 @@ void setup() {
   
   background(darkGray);
   size(500, 500);
+
+  // establish sizes for home and food
+  homeSize = width * .16;
+  foodSize = width * .16;  
+  homeOffset = height / 50;
+  foodOffset = height / 50;
   
   // establish locations for home and food
-  homeLocation = new Point(0, 420);
-  foodLocation = new Point(420, 0);
+  homeLocation = new Point(0 + homeOffset, height - homeSize - homeOffset);
+  foodLocation = new Point(width - foodSize - foodOffset, 0 + foodOffset);
   
   // spawn home and food
-  home = new Home(homeLocation, blue, 80);
-  food = new Food(foodLocation, pink, 80);
+  home = new Home(homeLocation, blue, homeSize);
+  food = new Food(foodLocation, pink, foodSize);
 }
 
 /********************

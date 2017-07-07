@@ -8,6 +8,8 @@ While they are holding food in their hands, they leave a dissipating trail behin
 /********************
 * Variables         *
 ********************/
+Point homeLocation;
+Home home;
 
 /********************
 * Setup             *
@@ -17,6 +19,8 @@ void setup() {
   background(0);
   size(500, 500);
   
+  homeLocation = new Point(0, 480);
+  home = new Home(homeLocation, 255, 20);
 }
 
 /********************
@@ -25,5 +29,6 @@ void setup() {
 void draw() {
  
   background(0);
+  home.display();
   
 }

@@ -11,11 +11,11 @@ class Home{
   /**************
   * Constructor *
   **************/
-  Home(Point location, color homeColor, float radius) {
+  Home(Point location, color homeColor, float diameter) {
     this.location = location;
     this.homeColor = homeColor;
-    this.radius = radius;
-    this.diameter = radius * 2;
+    this.diameter = diameter;
+    this.radius = diameter / 2;
   }
   
   /**************
@@ -23,7 +23,7 @@ class Home{
   **************/  
   // display home on screen
   void display() {
-      rectMode(CORNER);
+      ellipseMode(CORNER);
       stroke(homeColor);
       fill(homeColor);
       ellipse(location.xCoordinate, location.yCoordinate, diameter, diameter); 

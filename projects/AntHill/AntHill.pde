@@ -19,8 +19,8 @@ void setup() {
   background(0);
   size(500, 500);
   
-  homeLocation = new Point(0, 480);
-  home = new Home(homeLocation, 255, 20);
+  homeLocation = new Point(0, 420);
+  home = new Home(homeLocation, 255, 80);
 }
 
 /********************

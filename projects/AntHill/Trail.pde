@@ -7,7 +7,7 @@ class Trail{
   int trailColor;    // color of trail
   int trailWidth;    // diameter of points that constitute trail
   
-  Point[] trail;
+  Pheremone[] trail;
   
   /**************
   * Constructor *
@@ -18,11 +18,11 @@ class Trail{
     this.trailColor = trailColor;
     this.trailWidth = trailWidth;
     
-    trail = new Point[trailLength];
+    trail = new Pheremone[trailLength];
     
     // initialize array of points
     for (int i = 0; i < this.trailLength; i++) {
-      trail[i] = new Point(0, 0, trailWidth, trailColor);
+      trail[i] = new Pheremone(new Point(0, 0), trailWidth, trailColor);
     }
     
   }
@@ -51,7 +51,7 @@ class Trail{
     }
     
     // update final position in array to be new position
-    trail[trailLength - 1] = new Point(newXPosition, newYPosition, trailWidth, trailColor);
+    trail[trailLength - 1] = new Pheremone(new Point(newXPosition, newYPosition), trailWidth, trailColor);
     
   }
   

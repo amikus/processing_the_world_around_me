@@ -13,10 +13,8 @@ Point homeLocation;
 Point foodLocation;
 Home home;
 Food food;
-float homeSize;
+float homeSize;  
 float foodSize;
-float homeOffset;
-float foodOffset;
 
 // colors
 color pink = #ff79b0;      // used for food
@@ -33,15 +31,13 @@ void setup() {
   background(darkGray);
   size(500, 500);
 
-  // establish sizes for home and food
+  // establish sizes for home and food (currently relative to window size)
   homeSize = width * .16;
-  foodSize = width * .16;  
-  homeOffset = height / 50;
-  foodOffset = height / 50;
+  foodSize = width * .16;
   
   // establish locations for home and food
-  homeLocation = new Point(0 + homeOffset, height - homeSize - homeOffset);
-  foodLocation = new Point(width - foodSize - foodOffset, 0 + foodOffset);
+  homeLocation = getHomeLocation(homeSize);
+  foodLocation = getFoodLocation(foodSize);
   
   // spawn home and food
   home = new Home(homeLocation, blue, homeSize);
@@ -56,5 +52,37 @@ void draw() {
   background(darkGray);
   home.display();
   food.display();
+  
+}
+
+/********************
+* Other Methods     *
+********************/
+
+// determine location of home based on size
+// this is currently being calculated relative to window size
+Point getHomeLocation(float homeSize) {
+  
+  float homeOffset = height / 50;
+  
+  // bottom left corner of screen
+  float xPosition = homeOffset;
+  float yPosition = height - homeSize - homeOffset;
+  
+  return new Point(xPosition, yPosition);
+  
+}
+
+// determine location of food based on size
+// this is currently being calculated relative to window size
+Point getFoodLocation(float foodSize) {
+  
+  float foodOffset = height / 50;
+  
+  // top right corner of screen
+  float xPosition = width - foodSize - foodOffset;
+  float yPosition = foodOffset;
+  
+  return new Point(xPosition, yPosition);  
   
 }

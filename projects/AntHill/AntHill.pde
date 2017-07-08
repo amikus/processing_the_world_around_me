@@ -83,7 +83,11 @@ void draw() {
       food.reduceSize();
     }
     
-      
+     // if the ant is carrying food, display that food
+     if (currentAnt.isCarryingFood) {
+       Food morsel = spawnFood(currentAnt.diameter * .2, currentAnt.location);
+       morsel.display();
+     }
  
   }
 

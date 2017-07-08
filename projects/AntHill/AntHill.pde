@@ -16,12 +16,16 @@ Food food;
 float homeSize;  
 float foodSize;
 
+// ant
+Ant ant;
+float antSize;
+
 // colors
 color pink = #ff79b0;      // used for food
 color blue = #6ec6ff;      // used for home
 color yellow = #ffff52;    // pheremone trail
 color darkGray = #29434e;  // background
-color lightGray = #819ca9; // ants
+color lightGray = #999999; // ants
 
 /********************
 * Setup             *
@@ -42,6 +46,10 @@ void setup() {
   // spawn home and food
   home = new Home(homeLocation, blue, homeSize);
   food = new Food(foodLocation, pink, foodSize);
+  
+  // spawn ant
+  antSize = width * .05;
+  ant = new Ant(homeLocation, lightGray, antSize);
 }
 
 /********************
@@ -52,7 +60,7 @@ void draw() {
   background(darkGray);
   home.display();
   food.display();
-  
+  ant.display();
 }
 
 /********************

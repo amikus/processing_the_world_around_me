@@ -42,7 +42,7 @@ class Ant{
     this.previousXCoordinate = 0;
     this.previousYCoordinate = 0;
     
-    this.randomWalkVariance = 5;
+    this.randomWalkVariance = 2;
     this.randomTimeInterval = 60;
   }
   

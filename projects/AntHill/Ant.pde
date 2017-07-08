@@ -51,7 +51,19 @@ class Ant{
   
   // randomly walk around map, hunting for food
   void huntForFood() {
+    int xModifier = int(random(-5, 5));
+    int yModifier = int(random(-5, 5));
     
+        println("(xModifier: "+xModifier+", yModifier: "+yModifier+")");
+    
+    location.xCoordinate += xModifier;
+    location.yCoordinate += yModifier;
+    
+    location.xCoordinate = constrain(location.xCoordinate, 0+radius, width-radius);
+    location.yCoordinate = constrain(location.yCoordinate, 0+radius, height-radius);
+    
+    println("("+location.xCoordinate+", "+location.yCoordinate+")");
+
   }
  
   // create a trail with each step

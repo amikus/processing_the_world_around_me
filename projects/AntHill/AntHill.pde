@@ -49,7 +49,8 @@ void setup() {
   
   // spawn ant
   antSize = width * .05;
-  ant = new Ant(homeLocation, lightGray, antSize);
+  Point antSpawnLocation = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
+  ant = new Ant(antSpawnLocation, lightGray, antSize);
 }
 
 /********************
@@ -60,6 +61,7 @@ void draw() {
   background(darkGray);
   home.display();
   food.display();
+  ant.huntForFood();
   ant.display();
 }
 

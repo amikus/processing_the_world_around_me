@@ -55,13 +55,33 @@ class Ant{
     ellipse(location.xCoordinate, location.yCoordinate, diameter, diameter);     
   }
   
-  // check to see if intersecting with trail
-  void checkForTrail() {
+  // check to see if ant intersects with home
+  boolean intersectsWithHome(Home home) {
+    
+    // calculate distance between ant and home using distance formula/pythagorean theorem
+    float distance = sqrt(sq(home.location.xCoordinate-this.location.xCoordinate) + sq(home.location.yCoordinate-this.location.yCoordinate));
+    
+    // if the objects are closer to each other than the sum of their radiuses, they are intersecting
+    if (distance < this.radius + home.radius) {
+      return true;
+    } else {
+      return false;
+    }
     
   }
   
-  // check to see if intersecting with food
-  void checkForFood() {
+  // check to see if ant intersects with food
+  boolean intersectsWithFood(Food food) {
+    
+    // calculate distance between ant and food using distance formula/pythagorean theorem
+    float distance = sqrt(sq(food.location.xCoordinate-this.location.xCoordinate) + sq(food.location.yCoordinate-this.location.yCoordinate));
+    
+    // if the objects are closer to each other than the sum of their radiuses, they are intersecting
+    if (distance < this.radius + food.radius) {
+      return true;
+    } else {
+      return false;
+    }
     
   }
   

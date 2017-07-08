@@ -62,6 +62,12 @@ void draw() {
   for (int i = 0; i < arrayOfAnts.length; i++) {
     arrayOfAnts[i].huntForFood();
     arrayOfAnts[i].display();
+    if (arrayOfAnts[i].intersectsWithHome(home)) {
+      println("Ant #" + i + " is home!");
+    }
+    if (arrayOfAnts[i].intersectsWithFood(food)) {
+      println("Ant #" + i + " has found a food source!");
+    }
   }
 
 }

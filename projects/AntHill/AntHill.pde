@@ -61,16 +61,21 @@ void draw() {
   home.display();
   food.display();
   
+  // loop through the array of ants
   for (int i = 0; i < arrayOfAnts.length; i++) {
     
     Ant currentAnt = arrayOfAnts[i];
     
+    // move the ant and display it
     currentAnt.huntForFood();
     currentAnt.display();
     
-    if (currentAnt.intersectsWithHome(home)) {
+    // if the ant is at home and is carrying food
+    if (currentAnt.intersectsWithHome(home) && currentAnt.carryingFood) {
     }
     
+    // if the ant is at the food source and hasn't been there before
+    // have it pick up a piece of food and give it knowledge of the food location
     if (currentAnt.intersectsWithFood(food) && currentAnt.knowsFoodLocation == false) {
       currentAnt.knowsFoodLocation = true;
       currentAnt.carryingFood = true;

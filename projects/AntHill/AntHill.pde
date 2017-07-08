@@ -60,7 +60,7 @@ void draw() {
   food.display();
   
   for (int i = 0; i < arrayOfAnts.length; i++) {
-    arrayOfAnts[i].huntForFoodRandomWalkWithTimers();
+    arrayOfAnts[i].huntForFood();
     arrayOfAnts[i].display();
   }
 

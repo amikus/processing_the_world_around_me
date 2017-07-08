@@ -18,8 +18,6 @@ float foodSize;
 
 // ants
 Ant[] arrayOfAnts;
-float antSize;
-int numberOfAnts;
 
 // colors
 color pink = #ff79b0;      // used for food
@@ -49,16 +47,10 @@ void setup() {
   home = new Home(homeLocation, blue, homeSize);
   food = new Food(foodLocation, pink, foodSize);
   
-  // spawn ants
-  numberOfAnts = 15;
-  arrayOfAnts = new Ant[numberOfAnts];
-  antSize = width * .05;
-
-  // initialize array of Ants
-  for (int i = 0; i < arrayOfAnts.length; i++) {
-    Point antLocation = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
-    arrayOfAnts[i] = new Ant(antLocation, lightGray, antSize);
-  }
+  // create ants
+  int numberOfAnts = 15;            // number of ants to spawn
+  float antSize = width * .05;      // diameter of each ant
+  spawnAnts(numberOfAnts, antSize);
   
 }
 
@@ -102,4 +94,16 @@ Point getFoodLocation(float foodSize) {
   float yPosition = foodSize;
   
   return new Point(xPosition, yPosition);  
+}
+
+// generate an array full of ants
+void spawnAnts(int numberOfAnts, float antSize) {
+
+  arrayOfAnts = new Ant[numberOfAnts];
+
+  // initialize array of Ants
+  for (int i = 0; i < arrayOfAnts.length; i++) {
+    Point antLocation = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
+    arrayOfAnts[i] = new Ant(antLocation, lightGray, antSize);
+  }
 }

@@ -160,17 +160,17 @@ class Ant{
   
   // toggle carryingFood variable, which indicates whether or not ant is currently carrying food
   void toggleCarryingFood() {
-    
+    carryingFood = !carryingFood;  
   }
   
   // toggle knowsHomeLocation, which indicates whether or not ant is currently aware of home location
   void toggleKnowsHomeLocation() {
-    
+    knowsHomeLocation = !knowsHomeLocation;
   }
   
   // toggle knowsFoodLocation, which indicates whether or not ant is currently aware of food location
   void toggleKnowsFoodLocation() {
-    
+    knowsFoodLocation = !knowsFoodLocation;
   }
   
 }

@@ -38,17 +38,17 @@ void setup() {
   // create home
   homeSize = width * .16;
   homeLocation = getHomeLocation(homeSize);
-  spawnHome(homeSize, homeLocation);
+  home = spawnHome(homeSize, homeLocation);
   
   // create food
   foodSize = width * .16;
   foodLocation = getFoodLocation(foodSize);
-  spawnFood(foodSize, foodLocation);
+  food = spawnFood(foodSize, foodLocation);
   
   // create ants
   int numberOfAnts = 15;            // number of ants to spawn
   float antSize = width * .05;      // diameter of each ant
-  spawnAnts(numberOfAnts, antSize);
+  arrayOfAnts = spawnAnts(numberOfAnts, antSize);
   
 }
 
@@ -75,6 +75,7 @@ void draw() {
       currentAnt.knowsFoodLocation = true;
       currentAnt.carryingFood = true;
     }
+ 
   }
 
 }
@@ -106,23 +107,25 @@ Point getFoodLocation(float foodSize) {
 }
 
 // generate home location
-void spawnHome(float homeSize, Point homeLocation) {
-  home = new Home(homeLocation, blue, homeSize);
+Home spawnHome(float homeSize, Point homeLocation) {
+  return new Home(homeLocation, blue, homeSize);
 }
   
 // generate food location
-void spawnFood(float foodSize, Point foodLocation) {
-  food = new Food(foodLocation, pink, foodSize);
+Food spawnFood(float foodSize, Point foodLocation) {
+  return new Food(foodLocation, pink, foodSize);
 }
 
 // generate an array full of ants
-void spawnAnts(int numberOfAnts, float antSize) {
+Ant[] spawnAnts(int numberOfAnts, float antSize) {
 
-  arrayOfAnts = new Ant[numberOfAnts];
+  Ant[] antArray = new Ant[numberOfAnts];
 
   // initialize array of Ants
-  for (int i = 0; i < arrayOfAnts.length; i++) {
+  for (int i = 0; i < antArray.length; i++) {
     Point antLocation = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
-    arrayOfAnts[i] = new Ant(antLocation, lightGray, antSize);
+    antArray[i] = new Ant(antLocation, lightGray, antSize);
   }
+  
+  return antArray;
 }

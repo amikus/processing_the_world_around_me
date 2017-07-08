@@ -60,14 +60,18 @@ void draw() {
   food.display();
   
   for (int i = 0; i < arrayOfAnts.length; i++) {
-    arrayOfAnts[i].huntForFood();
-    arrayOfAnts[i].display();
-    if (arrayOfAnts[i].intersectsWithHome(home)) {
-      println("Ant #" + i + " is home!");
+    
+    Ant currentAnt = arrayOfAnts[i];
+    
+    currentAnt.huntForFood();
+    currentAnt.display();
+    
+    if (currentAnt.intersectsWithHome(home)) {
     }
-    if (arrayOfAnts[i].intersectsWithFood(food) && arrayOfAnts[i].knowsFoodLocation == false) {
-      arrayOfAnts[i].knowsFoodLocation = true;
-      arrayOfAnts[i].carryingFood = true;
+    
+    if (currentAnt.intersectsWithFood(food) && currentAnt.knowsFoodLocation == false) {
+      currentAnt.knowsFoodLocation = true;
+      currentAnt.carryingFood = true;
     }
   }
 

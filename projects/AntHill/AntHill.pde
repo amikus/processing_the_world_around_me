@@ -71,17 +71,19 @@ void draw() {
     currentAnt.display();
     
     // if the ant is at home and is carrying food
-    if (currentAnt.intersectsWithHome(home) && currentAnt.carryingFood) {
+    if (currentAnt.intersectsWithHome(home) && currentAnt.isCarryingFood) {
     }
     
     // if the ant is at the food source and hasn't been there before and isn't carrying any food
     // ant will pick up a piece of food and reduce size of food available
     // ant will also gain knowledge of the food location
-    if (currentAnt.intersectsWithFood(food) && currentAnt.knowsFoodLocation == false && !currentAnt.carryingFood) {
+    if (currentAnt.intersectsWithFood(food) && currentAnt.knowsFoodLocation == false && !currentAnt.isCarryingFood) {
       currentAnt.knowsFoodLocation = true;
-      currentAnt.carryingFood = true;
+      currentAnt.isCarryingFood = true;
       food.reduceSize();
     }
+    
+      
  
   }
 

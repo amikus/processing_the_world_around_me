@@ -10,7 +10,7 @@ class Ant{
   
   boolean knowsHomeLocation; // does this ant know where its home is?
   boolean knowsFoodLocation; // does this ant know where the food source is?
-  boolean carryingFood;      // is this ant currently carrying food?
+  boolean isCarryingFood;      // is this ant currently carrying food?
   
   int xModifier;      // used for updating x coordinate during movement
   int yModifier;      // used for updating y coordinate during movement
@@ -32,7 +32,7 @@ class Ant{
     
     this.knowsHomeLocation = true;
     this.knowsFoodLocation = false;
-    this.carryingFood = false;
+    this.isCarryingFood = false;
     
     this.xModifier = 0;
     this.yModifier = 0;

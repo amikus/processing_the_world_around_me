@@ -16,8 +16,10 @@ Food food;
 float homeSize;  
 float foodSize;
 
-// ant
-Ant ant;
+// ants
+Ant antRandomWalk;
+Ant antThirdCoordinateRandomWalk;
+Ant antTimedRandomWalk;
 float antSize;
 
 // colors
@@ -34,7 +36,8 @@ void setup() {
   
   background(darkGray);
   size(500, 500);
-
+  frameRate(60);
+  
   // establish sizes for home and food (currently relative to window size)
   homeSize = width * .16;
   foodSize = width * .16;
@@ -49,8 +52,14 @@ void setup() {
   
   // spawn ant
   antSize = width * .05;
-  Point antSpawnLocation = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
-  ant = new Ant(antSpawnLocation, lightGray, antSize);
+  Point antRandomWalkSpawnLocation = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
+  Point antThirdCoordinateRandomWalkSpawnLocation = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
+  Point antTimedRandomWalkSpawnLocation = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
+  
+  antRandomWalk = new Ant(antRandomWalkSpawnLocation, #ffffff, antSize);
+  antThirdCoordinateRandomWalk = new Ant(antThirdCoordinateRandomWalkSpawnLocation, #bbbbbb, antSize);
+  antTimedRandomWalk = new Ant(antTimedRandomWalkSpawnLocation, #888888, antSize);
+  
 }
 
 /********************
@@ -61,8 +70,19 @@ void draw() {
   background(darkGray);
   home.display();
   food.display();
-  ant.huntForFood();
-  ant.display();
+  
+  // first ant
+  antRandomWalk.huntForFoodRandomWalk();
+  antRandomWalk.display();
+  
+  // second ant
+  antThirdCoordinateRandomWalk.huntForFoodRandomWalkWithThirdCoordinateModification();
+  antThirdCoordinateRandomWalk.display();
+  
+  // third ant
+  antTimedRandomWalk.huntForFoodRandomWalkWithTimers();
+  antTimedRandomWalk.display();
+
 }
 
 /********************

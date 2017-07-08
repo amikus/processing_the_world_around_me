@@ -68,4 +68,14 @@ class Ant{
     
   }
   
+  // toggle knowsHomeLocation, which indicates whether or not ant is currently aware of home location
+  void toggleKnowsHomeLocation() {
+    
+  }
+  
+  // toggle knowsFoodLocation, which indicates whether or not ant is currently aware of food location
+  void toggleKnowsFoodLocation() {
+    
+  }
+  
 }

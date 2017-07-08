@@ -39,7 +39,18 @@ class Food{
   
   // reduce food diameter
   void reduceSize() {
-    diameter = diameter - 1;
+    
+    // only update food size if there is food available to be grabbed
+    if (diameter > 0) {
+      diameter = diameter - 1;
+      radius = diameter / 2;
+      
+      // if these values drop below 0, set them to 0 again
+      if (diameter <= 0) {
+        diameter = 0;
+        radius = 0;
+      }
+    }
   }
   
 }

@@ -65,8 +65,9 @@ void draw() {
     if (arrayOfAnts[i].intersectsWithHome(home)) {
       println("Ant #" + i + " is home!");
     }
-    if (arrayOfAnts[i].intersectsWithFood(food)) {
-      println("Ant #" + i + " has found a food source!");
+    if (arrayOfAnts[i].intersectsWithFood(food) && arrayOfAnts[i].knowsFoodLocation == false) {
+      arrayOfAnts[i].knowsFoodLocation = true;
+      arrayOfAnts[i].carryingFood = true;
     }
   }
 

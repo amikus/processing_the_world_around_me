@@ -17,10 +17,9 @@ float homeSize;
 float foodSize;
 
 // ants
-Ant ant1;
-Ant ant2;
-Ant ant3;
+Ant[] arrayOfAnts;
 float antSize;
+int numberOfAnts;
 
 // colors
 color pink = #ff79b0;      // used for food
@@ -50,15 +49,16 @@ void setup() {
   home = new Home(homeLocation, blue, homeSize);
   food = new Food(foodLocation, pink, foodSize);
   
-  // spawn ant
+  // spawn ants
+  numberOfAnts = 15;
+  arrayOfAnts = new Ant[numberOfAnts];
   antSize = width * .05;
-  Point ant1Location = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
-  Point ant2Location = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
-  Point ant3Location = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
-  
-  ant1 = new Ant(ant1Location, #ffffff, antSize);
-  ant2 = new Ant(ant2Location, #bbbbbb, antSize);
-  ant3 = new Ant(ant3Location, #888888, antSize);
+
+  // initialize array of Ants
+  for (int i = 0; i < arrayOfAnts.length; i++) {
+    Point antLocation = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
+    arrayOfAnts[i] = new Ant(antLocation, lightGray, antSize);
+  }
   
 }
 
@@ -71,17 +71,10 @@ void draw() {
   home.display();
   food.display();
   
-  // first ant
-  ant1.huntForFoodRandomWalkWithTimers();
-  ant1.display();
-  
-  // second ant
-  ant2.huntForFoodRandomWalkWithTimers();
-  ant2.display();
-  
-  // third ant
-  ant3.huntForFoodRandomWalkWithTimers();
-  ant3.display();
+  for (int i = 0; i < arrayOfAnts.length; i++) {
+    arrayOfAnts[i].huntForFoodRandomWalkWithTimers();
+    arrayOfAnts[i].display();
+  }
 
 }
 

@@ -70,8 +70,9 @@ void draw() {
     currentAnt.huntForFood();
     currentAnt.display();
     
-    // if the ant is at home and is carrying food
+    // if the ant is at home and is carrying food, have it drop the food
     if (currentAnt.intersectsWithHome(home) && currentAnt.isCarryingFood) {
+      currentAnt.isCarryingFood = false;
     }
     
     // if the ant is at the food source and hasn't been there before and isn't carrying any food

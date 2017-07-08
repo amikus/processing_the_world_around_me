@@ -37,11 +37,13 @@ void setup() {
   
   // create home
   homeSize = width * .16;
-  spawnHome(homeSize);
+  homeLocation = getHomeLocation(homeSize);
+  spawnHome(homeSize, homeLocation);
   
   // create food
   foodSize = width * .16;
-  spawnFood(foodSize);
+  foodLocation = getFoodLocation(foodSize);
+  spawnFood(foodSize, foodLocation);
   
   // create ants
   int numberOfAnts = 15;            // number of ants to spawn
@@ -104,14 +106,12 @@ Point getFoodLocation(float foodSize) {
 }
 
 // generate home location
-void spawnHome(float homeSize) {
-  homeLocation = getHomeLocation(homeSize);
+void spawnHome(float homeSize, Point homeLocation) {
   home = new Home(homeLocation, blue, homeSize);
 }
   
 // generate food location
-void spawnFood(float foodSize) {
-  foodLocation = getFoodLocation(foodSize);
+void spawnFood(float foodSize, Point foodLocation) {
   food = new Food(foodLocation, pink, foodSize);
 }
 

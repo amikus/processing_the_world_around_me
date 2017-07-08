@@ -35,17 +35,13 @@ void setup() {
   size(500, 500);
   frameRate(60);
   
-  // establish sizes for home and food (currently relative to window size)
+  // create home
   homeSize = width * .16;
+  spawnHome(homeSize);
+  
+  // create food
   foodSize = width * .16;
-  
-  // establish locations for home and food
-  homeLocation = getHomeLocation(homeSize);
-  foodLocation = getFoodLocation(foodSize);
-  
-  // spawn home and food
-  home = new Home(homeLocation, blue, homeSize);
-  food = new Food(foodLocation, pink, foodSize);
+  spawnFood(foodSize);
   
   // create ants
   int numberOfAnts = 15;            // number of ants to spawn
@@ -94,6 +90,18 @@ Point getFoodLocation(float foodSize) {
   float yPosition = foodSize;
   
   return new Point(xPosition, yPosition);  
+}
+
+// generate home location
+void spawnHome(float homeSize) {
+  homeLocation = getHomeLocation(homeSize);
+  home = new Home(homeLocation, blue, homeSize);
+}
+  
+// generate food location
+void spawnFood(float foodSize) {
+  foodLocation = getFoodLocation(foodSize);
+  food = new Food(foodLocation, pink, foodSize);
 }
 
 // generate an array full of ants

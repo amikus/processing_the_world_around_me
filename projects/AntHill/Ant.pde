@@ -20,11 +20,8 @@ class Ant{
   int randomWalkVariance;   // degree to which the random walk varies
   int randomTimeInterval;   // constraint for random time interval
   
-  float pheremoneDiameter;      // diameter of pheremone dots
-  color pheremoneColor;         // color to use for pheremones
-  Trail pheremoneTrail;         // array of pheremones that ant has dropped
-  int pheremoneTimer;           // timer for keeping track of home long to wait between pheremones
-  int randomPheremoneSpacing;   // constraint for interval to wait before dropping pheremone
+  int pheremoneTimer;       // timer for keeping track of home long to wait between pheremones
+  int pheremoneSpacing;     // constraint for interval to wait before dropping pheremone
   
   /**************
   * Constructor *
@@ -47,11 +44,8 @@ class Ant{
     
     this.randomWalkVariance = 2;
     this.randomTimeInterval = 60;
-    
-    this.pheremoneDiameter = this.diameter / 4;
-    this.pheremoneColor = pheremoneColor;
-    this.pheremoneTrail = new Trail(50, pheremoneColor, pheremoneDiameter);
-    this.randomPheremoneSpacing = 20;
+
+    this.pheremoneSpacing = 20;
   }
   
   /**************
@@ -60,7 +54,6 @@ class Ant{
   
   // display ant to screen
   void display() {
-    pheremoneTrail.display();
     ellipseMode(CENTER);
     stroke(#555555);
     fill(antColor);
@@ -172,26 +165,26 @@ class Ant{
     location.xCoordinate = constrain(location.xCoordinate, 0+radius, width-radius);
     location.yCoordinate = constrain(location.yCoordinate, 0+radius, height-radius);
   }
-   
-  // create a pheremone with each step, adding it to the trail
-  void dropPheremone() {
+  
+  // determine whether or not a pheremone should be dropped
+  boolean pheremoneShouldDrop() {
     
-    // whenever pheremone timer reaches 0...
+    // Whenever pheremone timer reaches 0...
     if (pheremoneTimer == 0) {
-      // ...drop a pheremone
-      Point pheremoneLocation = new Point(location.xCoordinate, location.yCoordinate);
-      Pheremone pheremone = new Pheremone(pheremoneLocation, pheremoneDiameter, pheremoneColor);
-      pheremoneTrail.updateTrail(pheremone);
       
-      // ...and reset the timer
-      pheremoneTimer = int(random(randomPheremoneSpacing));
+      // ..reset timer
+      pheremoneTimer = int(random(pheremoneSpacing));
+      // ...and return true. It's time to drop a pheremone.
+      return true;
       
-    // otherwise, decrement the timer
+    // otherwise...
     } else {
-      pheremoneTimer--; 
-    }
-    
-
+      
+      // ...decrement the timer
+      pheremoneTimer--;
+      // ...and return false
+      return false;     
+    }    
   }
   
 }

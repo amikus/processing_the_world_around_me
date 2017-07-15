@@ -26,6 +26,11 @@ color yellow = #ffff52;    // pheremone trail
 color darkGray = #29434e;  // background
 color lightGray = #999999; // ants
 
+float pheremoneDiameter;      // diameter of pheremone dots
+color pheremoneColor;         // color to use for pheremones
+Trail pheremoneTrail;         // array of pheremones that ant has dropped
+
+
 /********************
 * Setup             *
 ********************/
@@ -50,6 +55,11 @@ void setup() {
   float antSize = width * .05;      // diameter of each ant
   arrayOfAnts = spawnAnts(numberOfAnts, antSize);
   
+  // create pheremone trail
+  this.pheremoneDiameter = antSize / 4;
+  this.pheremoneColor = yellow;
+  this.pheremoneTrail = new Trail(50, pheremoneColor, pheremoneDiameter);
+  
 }
 
 /********************
@@ -58,6 +68,7 @@ void setup() {
 void draw() {
  
   background(darkGray);
+  pheremoneTrail.display();
   home.display();
   food.display();
   
@@ -72,7 +83,14 @@ void draw() {
     // if the ant is carrying food and knows where home is, have it return home
     if (currentAnt.isCarryingFood && currentAnt.knowsHomeLocation) {
       currentAnt.walkToLocation(homeLocation);
-      currentAnt.dropPheremone();
+      
+      if (currentAnt.pheremoneShouldDrop()){
+        // ...drop a pheremone
+        Point pheremoneLocation = new Point(currentAnt.location.xCoordinate, currentAnt.location.yCoordinate);
+        Pheremone pheremone = new Pheremone(pheremoneLocation, pheremoneDiameter, pheremoneColor);
+        pheremoneTrail.updateTrail(pheremone);
+      }
+      
     }
     // if the ant is not carry food and knows where food is, have it return to food
     else if (!currentAnt.isCarryingFood && currentAnt.knowsFoodLocation) {
@@ -113,7 +131,7 @@ void draw() {
       Food morsel = spawnFood(currentAnt.diameter * .5, currentAnt.location);
       morsel.display();
     }
- 
+
   }
 
 }

@@ -56,9 +56,9 @@ void setup() {
   arrayOfAnts = spawnAnts(numberOfAnts, antSize);
   
   // create pheremone trail
-  this.pheremoneDiameter = antSize / 4;
-  this.pheremoneColor = yellow;
-  this.pheremoneTrail = new Trail(50, pheremoneColor, pheremoneDiameter);
+  pheremoneDiameter = antSize / 4;
+  pheremoneColor = yellow;
+  pheremoneTrail = new Trail(50, pheremoneColor, pheremoneDiameter);
   
 }
 
@@ -132,6 +132,12 @@ void draw() {
       morsel.display();
     }
 
+    // if the ant encounters a pheremone, print a message to the console
+    for (int trailPosition = 0; trailPosition < pheremoneTrail.trailLength; trailPosition++) {
+      if (currentAnt.intersectsWithPheremone(pheremoneTrail.getPheremone(trailPosition))) {
+        currentAnt.knowsFoodLocation = true;
+      }
+    }
   }
 
 }

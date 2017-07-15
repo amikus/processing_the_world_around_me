@@ -40,6 +40,11 @@ class Trail{
     }
     
   }
+ 
+  // get pheremone at provided location
+  Pheremone getPheremone(int pheremonePosition) {
+    return trail[pheremonePosition];
+  }
   
   // update trail array to contain new pheremones
   void updateTrail(Pheremone pheremone) {

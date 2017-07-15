@@ -5,6 +5,7 @@ class Pheremone{
   **************/
   Point location;
   float diameter;
+  float radius;
   color pheremoneColor;
   
   /**************
@@ -13,6 +14,7 @@ class Pheremone{
   Pheremone(Point location, float diameter, color pheremoneColor) {
     this.location = location;
     this.diameter = diameter;
+    this.radius = diameter/2;
     this.pheremoneColor = pheremoneColor;
   }
   

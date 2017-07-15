@@ -91,6 +91,20 @@ class Ant{
     
   }
   
+  // check to see if ant intersects with pheremone
+  boolean intersectsWithPheremone(Pheremone pheremone) {
+  
+    // calculate distance between ant and pheremone using distance formula/phthagorean therem
+    float distance = sqrt(sq(pheremone.location.xCoordinate-this.location.xCoordinate) + sq(pheremone.location.yCoordinate-this.location.yCoordinate));
+      
+    // if the objects are closer to each other than the sum of their radiuses, they are intersecting
+    if (distance < this.radius + pheremone.radius) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
   // walk around map, hunting for food
   void huntForFood() {
     

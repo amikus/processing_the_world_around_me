@@ -41,8 +41,8 @@ class Trail{
     
   }
   
-  // update trail array to contain new Points
-  void updateTrail(float newXPosition, float newYPosition) {
+  // update trail array to contain new pheremones
+  void updateTrail(Pheremone pheremone) {
 
     // shift each position in array by 1
     for (int i = 0; i < trailLength-1; i++) {    
@@ -51,7 +51,7 @@ class Trail{
     }
     
     // update final position in array to be new position
-    trail[trailLength - 1] = new Pheremone(new Point(newXPosition, newYPosition), trailWidth, trailColor);
+    trail[trailLength - 1] = pheremone;
     
   }
   

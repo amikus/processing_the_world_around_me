@@ -71,7 +71,8 @@ void draw() {
     
     // if the ant is carrying food and knows where home is, have it return home
     if (currentAnt.isCarryingFood && currentAnt.knowsHomeLocation) {
-      currentAnt.walkToLocation(homeLocation);  
+      currentAnt.walkToLocation(homeLocation);
+      currentAnt.dropPheremone();
     }
     // if the ant is not carry food and knows where food is, have it return to food
     else if (!currentAnt.isCarryingFood && currentAnt.knowsFoodLocation) {
@@ -107,7 +108,7 @@ void draw() {
       
     }
     
-    // if the ant is carrying food, display that food
+    // if the ant is carrying food, display that food and drop pheremone
     if (currentAnt.isCarryingFood) {
       Food morsel = spawnFood(currentAnt.diameter * .5, currentAnt.location);
       morsel.display();

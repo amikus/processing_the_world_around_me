@@ -10,7 +10,7 @@ class Ant{
   
   boolean knowsHomeLocation; // does this ant know where its home is?
   boolean knowsFoodLocation; // does this ant know where the food source is?
-  boolean isCarryingFood;      // is this ant currently carrying food?
+  boolean isCarryingFood;    // is this ant currently carrying food?
   
   int xModifier;      // used for updating x coordinate during movement
   int yModifier;      // used for updating y coordinate during movement
@@ -20,10 +20,13 @@ class Ant{
   int randomWalkVariance;   // degree to which the random walk varies
   int randomTimeInterval;   // constraint for random time interval
   
+  color pheremoneColor;  // color to use for pheremones
+  Trail pheremoneTrail;  // array of pheremones that ant has dropped
+  
   /**************
   * Constructor *
   **************/
-  Ant(Point location, color antColor, float diameter) {
+  Ant(Point location, color antColor, float diameter, color pheremoneColor) {
     
     this.location = location;
     this.antColor = antColor;
@@ -41,6 +44,9 @@ class Ant{
     
     this.randomWalkVariance = 2;
     this.randomTimeInterval = 60;
+    
+    this.pheremoneColor = pheremoneColor;
+    this.pheremoneTrail = new Trail(50, pheremoneColor, diameter/4);
   }
   
   /**************

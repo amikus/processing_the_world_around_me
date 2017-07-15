@@ -161,7 +161,7 @@ Ant[] spawnAnts(int numberOfAnts, float antSize) {
   // initialize array of Ants
   for (int i = 0; i < antArray.length; i++) {
     Point antLocation = new Point(homeLocation.xCoordinate, homeLocation.yCoordinate);
-    antArray[i] = new Ant(antLocation, lightGray, antSize);
+    antArray[i] = new Ant(antLocation, lightGray, antSize, yellow);
   }
   
   return antArray;

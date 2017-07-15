@@ -4,15 +4,15 @@ class Trail{
   * Variables   *
   **************/
   int trailLength;   // length of trail
-  int trailColor;    // color of trail
-  int trailWidth;    // diameter of points that constitute trail
+  color trailColor;  // color of trail
+  float trailWidth;  // diameter of points that constitute trail
   
   Pheremone[] trail;
   
   /**************
   * Constructor *
   **************/
-  Trail(int trailLength, color trailColor, color trailWidth) {
+  Trail(int trailLength, color trailColor, float trailWidth) {
     
     this.trailLength = trailLength;
     this.trailColor = trailColor;

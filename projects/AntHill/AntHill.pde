@@ -90,22 +90,28 @@ void draw() {
     // if the ant is at the food source and isn't carrying any food
     if (currentAnt.intersectsWithFood(food) && !currentAnt.isCarryingFood) {
       
-      // Ant will pick up a piece of food, reducing the food source's size
-      currentAnt.isCarryingFood = true;
-      food.reduceSize();
-      
-      // if the ant doesn't know where the food is yet, give it that knowledge
+      // If the ant doesn't know where the food is yet, give it that knowledge
       if (!currentAnt.knowsFoodLocation) {
         currentAnt.knowsFoodLocation = true;
       }
       
+      // If the ant knows where the food is, but it's all gone, take away that knowledge
+      if (currentAnt.knowsFoodLocation && food.diameter <= 0) {
+        currentAnt.knowsFoodLocation = false;
+      }
+      // Otherwise, the ant will pick up a piece of food, reducing the food source's size
+      else {
+        currentAnt.isCarryingFood = true;
+        food.reduceSize();
+      }
+      
     }
     
-     // if the ant is carrying food, display that food
-     if (currentAnt.isCarryingFood) {
-       Food morsel = spawnFood(currentAnt.diameter * .5, currentAnt.location);
-       morsel.display();
-     }
+    // if the ant is carrying food, display that food
+    if (currentAnt.isCarryingFood) {
+      Food morsel = spawnFood(currentAnt.diameter * .5, currentAnt.location);
+      morsel.display();
+    }
  
   }
 

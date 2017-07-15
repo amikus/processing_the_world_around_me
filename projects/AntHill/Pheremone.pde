@@ -7,6 +7,7 @@ class Pheremone{
   float diameter;
   float radius;
   color pheremoneColor;
+
   
   /**************
   * Constructor *
@@ -26,5 +27,7 @@ class Pheremone{
     fill(pheremoneColor);
     ellipse(location.xCoordinate, location.yCoordinate, diameter, diameter);  
   }
+  
+
   
 }

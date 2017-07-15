@@ -26,9 +26,9 @@ color yellow = #ffff52;    // pheremone trail
 color darkGray = #29434e;  // background
 color lightGray = #999999; // ants
 
-float pheremoneDiameter;      // diameter of pheremone dots
-color pheremoneColor;         // color to use for pheremones
-Trail pheremoneTrail;         // array of pheremones that ant has dropped
+float trailDiameter;     // diameter of pheremone dots
+color trailColor;        // color to use for pheremones
+Trail pheremoneTrail;    // array of pheremones that ant has dropped
 
 
 /********************
@@ -56,9 +56,9 @@ void setup() {
   arrayOfAnts = spawnAnts(numberOfAnts, antSize);
   
   // create pheremone trail
-  pheremoneDiameter = antSize / 4;
-  pheremoneColor = yellow;
-  pheremoneTrail = new Trail(50, pheremoneColor, pheremoneDiameter);
+  trailColor = yellow;
+  trailDiameter = antSize / 4;
+  pheremoneTrail = new Trail(trailColor, trailDiameter);
   
 }
 
@@ -87,8 +87,7 @@ void draw() {
       if (currentAnt.pheremoneShouldDrop()){
         // ...drop a pheremone
         Point pheremoneLocation = new Point(currentAnt.location.xCoordinate, currentAnt.location.yCoordinate);
-        Pheremone pheremone = new Pheremone(pheremoneLocation, pheremoneDiameter, pheremoneColor);
-        pheremoneTrail.updateTrail(pheremone);
+        pheremoneTrail.addToTrail(pheremoneLocation);
       }
       
     }
@@ -133,7 +132,7 @@ void draw() {
     }
 
     // if the ant encounters a pheremone, print a message to the console
-    for (int trailPosition = 0; trailPosition < pheremoneTrail.trailLength; trailPosition++) {
+    for (int trailPosition = 0; trailPosition < pheremoneTrail.trail.length; trailPosition++) {
       if (currentAnt.intersectsWithPheremone(pheremoneTrail.getPheremone(trailPosition))) {
         currentAnt.knowsFoodLocation = true;
       }

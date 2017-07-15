@@ -68,6 +68,7 @@ void setup() {
 void draw() {
  
   background(darkGray);
+  pheremoneTrail.checkForDegradation();
   pheremoneTrail.display();
   home.display();
   food.display();

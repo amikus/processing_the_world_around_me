@@ -47,4 +47,21 @@ class Trail{
     
   }
   
+  // check for degradation of Pheremones and remove degraded pheremones from trail
+  void checkForDegradation() {
+    
+    int degradedPheremones = 0;
+    
+    for (int i = 0; i < trail.length; i++) {
+      if (trail[i].isDegraded()) {
+        degradedPheremones++;
+      }
+    }
+    
+    if (degradedPheremones > 0) {
+      trail = (Pheremone[]) subset(trail, degradedPheremones);
+    }
+    
+  }
+  
 }

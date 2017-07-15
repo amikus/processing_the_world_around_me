@@ -71,7 +71,7 @@ void draw() {
     
     // if the ant is carrying food and knows where home is, have it return home
     if (currentAnt.isCarryingFood && currentAnt.knowsHomeLocation) {
-      currentAnt.walkToHome(homeLocation);  
+      currentAnt.walkToLocation(homeLocation);  
     } else {
       currentAnt.huntForFood();
     }

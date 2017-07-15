@@ -115,12 +115,12 @@ class Ant{
     location.yCoordinate = constrain(location.yCoordinate, 0+radius, height-radius);    
   }
   
-  // return to home location
-  void walkToHome(Point homeLocation) {
+  // move towards a given location
+  void walkToLocation(Point newLocation) {
     
     // calculate distance to move along each axis
-    float yAxisDistance = location.yCoordinate - homeLocation.yCoordinate; 
-    float xAxisDistance = location.xCoordinate - homeLocation.xCoordinate;
+    float yAxisDistance = location.yCoordinate - newLocation.yCoordinate; 
+    float xAxisDistance = location.xCoordinate - newLocation.xCoordinate;
     
     // calculate slope (m) and y-intercept (b)
     float m = yAxisDistance/xAxisDistance;
@@ -130,8 +130,8 @@ class Ant{
     if (xAxisDistance >= yAxisDistance) {
       
       // depending upon whether current x-coordinate is higher or lower than
-      // home's x-coordinate, either add or subtract one to get new x-coordinate
-      if (location.xCoordinate >= homeLocation.xCoordinate) {
+      // new location's x-coordinate, either add or subtract one to get new x-coordinate
+      if (location.xCoordinate >= newLocation.xCoordinate) {
         location.xCoordinate -= 1;
       } else {
         location.xCoordinate += 1;
@@ -144,8 +144,8 @@ class Ant{
     else {
       
       // depending upon whether current y-coordinate is higher or lower than
-      // home's y-coordinate, either add or subtract one to get new y-coordinate
-      if (location.yCoordinate >= homeLocation.yCoordinate) {
+      // new location's y-coordinate, either add or subtract one to get new y-coordinate
+      if (location.yCoordinate >= newLocation.yCoordinate) {
         location.yCoordinate -= 1;
       } else {
         location.yCoordinate += 1;
@@ -159,7 +159,7 @@ class Ant{
     location.xCoordinate = constrain(location.xCoordinate, 0+radius, width-radius);
     location.yCoordinate = constrain(location.yCoordinate, 0+radius, height-radius);
   }
-  
+   
   // create a trail with each step
   void createTrail() {
   }

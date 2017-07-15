@@ -7,7 +7,7 @@ class Pheremone{
   float diameter;
   float radius;
   color pheremoneColor;
-
+  int timer;    // pheremone will degrade after this many ticks
   
   /**************
   * Constructor *
@@ -17,6 +17,8 @@ class Pheremone{
     this.diameter = diameter;
     this.radius = diameter/2;
     this.pheremoneColor = pheremoneColor;
+    
+    this.timer = 10;
   }
   
   /**************
@@ -28,6 +30,20 @@ class Pheremone{
     ellipse(location.xCoordinate, location.yCoordinate, diameter, diameter);  
   }
   
-
+  // check to see if pheremone is degraded
+  boolean isDegraded() {
+    
+    // if timer has reached zero, reset it and return true
+    if (timer == 0) {
+      timer = 10;
+      return true;
+    }
+    
+    // otherwise, decrement timer and return false
+    else {
+      timer--;
+      return false;
+    }
+  }
   
 }

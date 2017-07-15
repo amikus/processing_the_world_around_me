@@ -115,6 +115,51 @@ class Ant{
     location.yCoordinate = constrain(location.yCoordinate, 0+radius, height-radius);    
   }
   
+  // return to home location
+  void walkToHome(Point homeLocation) {
+    
+    // calculate distance to move along each axis
+    float yAxisDistance = location.yCoordinate - homeLocation.yCoordinate; 
+    float xAxisDistance = location.xCoordinate - homeLocation.xCoordinate;
+    
+    // calculate slope (m) and y-intercept (b)
+    float m = yAxisDistance/xAxisDistance;
+    float b = location.yCoordinate - (m * location.xCoordinate);
+    
+    // if ant has further to walk along x axis
+    if (xAxisDistance >= yAxisDistance) {
+      
+      // depending upon whether current x-coordinate is higher or lower than
+      // home's x-coordinate, either add or subtract one to get new x-coordinate
+      if (location.xCoordinate >= homeLocation.xCoordinate) {
+        location.xCoordinate -= 1;
+      } else {
+        location.xCoordinate += 1;
+      }
+      
+      // use y = mx+b to calculate y-coordinate based on x-coordinate
+      location.yCoordinate = (m * location.xCoordinate) + b;
+    } 
+    // if ant has further to walk along y axis
+    else {
+      
+      // depending upon whether current y-coordinate is higher or lower than
+      // home's y-coordinate, either add or subtract one to get new y-coordinate
+      if (location.yCoordinate >= homeLocation.yCoordinate) {
+        location.yCoordinate -= 1;
+      } else {
+        location.yCoordinate += 1;
+      }
+      
+      // use x = (y-b)/m to calculate x-coordinate based on y-coordinate
+      location.xCoordinate = (location.yCoordinate - b)/m;
+    }
+    
+    // constrain x and y coordinates to boundaries of window
+    location.xCoordinate = constrain(location.xCoordinate, 0+radius, width-radius);
+    location.yCoordinate = constrain(location.yCoordinate, 0+radius, height-radius);
+  }
+  
   // create a trail with each step
   void createTrail() {
   }

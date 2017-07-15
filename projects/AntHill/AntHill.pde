@@ -66,9 +66,15 @@ void draw() {
     
     Ant currentAnt = arrayOfAnts[i];
     
-    // move the ant and display it
-    currentAnt.huntForFood();
+    // display the ant
     currentAnt.display();
+    
+    // if the ant is carrying food and knows where home is, have it return home
+    if (currentAnt.isCarryingFood && currentAnt.knowsHomeLocation) {
+      currentAnt.walkToHome(homeLocation);  
+    } else {
+      currentAnt.huntForFood();
+    }
     
     // if the ant is at home and is carrying food, have it drop the food
     if (currentAnt.intersectsWithHome(home) && currentAnt.isCarryingFood) {

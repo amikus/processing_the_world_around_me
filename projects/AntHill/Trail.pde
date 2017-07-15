@@ -22,7 +22,7 @@ class Trail{
     
     // initialize array of points
     for (int i = 0; i < this.trailLength; i++) {
-      trail[i] = new Pheremone(new Point(0, 0), trailWidth, trailColor);
+      trail[i] = new Pheremone(new Point(-200, -200), trailWidth, trailColor);
     }
     
   }

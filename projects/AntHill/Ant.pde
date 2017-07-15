@@ -20,8 +20,9 @@ class Ant{
   int randomWalkVariance;   // degree to which the random walk varies
   int randomTimeInterval;   // constraint for random time interval
   
-  color pheremoneColor;  // color to use for pheremones
-  Trail pheremoneTrail;  // array of pheremones that ant has dropped
+  float pheremoneDiameter;  // diameter of pheremone dots
+  color pheremoneColor;     // color to use for pheremones
+  Trail pheremoneTrail;     // array of pheremones that ant has dropped
   
   /**************
   * Constructor *
@@ -45,8 +46,9 @@ class Ant{
     this.randomWalkVariance = 2;
     this.randomTimeInterval = 60;
     
+    this.pheremoneDiameter = this.diameter / 4;
     this.pheremoneColor = pheremoneColor;
-    this.pheremoneTrail = new Trail(50, pheremoneColor, diameter/4);
+    this.pheremoneTrail = new Trail(50, pheremoneColor, pheremoneDiameter);
   }
   
   /**************
@@ -166,8 +168,12 @@ class Ant{
     location.yCoordinate = constrain(location.yCoordinate, 0+radius, height-radius);
   }
    
-  // create a trail with each step
-  void createTrail() {
+  // create a pheremone with each step, adding it to the trail
+  void dropPheremone() {
+    
+    Point pheremoneLocation = new Point(location.xCoordinate, location.yCoordinate);
+    Pheremone pheremone = new Pheremone(pheremoneLocation, pheremoneDiameter, pheremoneColor);
+    pheremoneTrail.updateTrail(pheremone);
   }
   
 }

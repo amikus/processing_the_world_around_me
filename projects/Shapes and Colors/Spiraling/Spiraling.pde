@@ -6,9 +6,10 @@ Draws a spiral using polar coordinates
 * Variables         *
 ********************/
 
-float halfWidth;
-float halfHeight;
+CartesianPoint centerOfScreen;
 int penSize;
+Spiral spiral;
+color penColor;
 
 /********************
 * Setup             *
@@ -20,12 +21,15 @@ void setup() {
   frameRate(60);
   background(255);
   
-  // locate middle of screen
-  halfWidth = width / 2;
-  halfHeight = height / 2;
+  // find center of screen
+  centerOfScreen = new CartesianPoint(width/2, height/2);
   
   // establish size of ellipses that will be used for drawing
   penSize = width / 15;
+  penColor = 0;
+  
+  // create spiral
+  spiral = new Spiral(centerOfScreen, penSize, penColor);
 }
 
 /********************
@@ -36,7 +40,7 @@ void draw() {
   noStroke();
   fill(0);
   
-  ellipse(halfWidth, halfHeight, penSize, penSize);
+  ellipse(centerOfScreen.xCoordinate, centerOfScreen.yCoordinate, penSize, penSize);
   
 }
 

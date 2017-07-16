@@ -1,4 +1,4 @@
-class Point{
+class CartesianPoint{
   
   /**************
   * Variables   *
@@ -9,7 +9,7 @@ class Point{
   /**************
   * Constructor *
   **************/
-  Point(float xCoordinate, float yCoordinate) {
+  CartesianPoint(float xCoordinate, float yCoordinate) {
     this.xCoordinate = xCoordinate;
     this.yCoordinate = yCoordinate;
   }

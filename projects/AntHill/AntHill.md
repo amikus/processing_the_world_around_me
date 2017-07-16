@@ -1,23 +1,22 @@
-This is Boog:
+This project was an independent project. No guidance was given by the author apart from "Develop an idea for a project that can be created with Processing using simple shape drawing and the fundamentals of programming." The goal of the project was to practice decomposing a complex goal into smaller components.
 
-![Boog](StationaryBoog/Boog.png)
+I've been interested in swarm behavior and in insect behavior for a while, and I love learning about AI, distributed learning systems, and I love the idea that ants--instead of holding information inside of their own bodies--store some information in pheremones that they release into their environment. I've never gotten around to actually writing a program to explore these ideas, though, and this project was a great opportunity to get started.
 
-He's a bug, but he's into ballet and leathermaking, which aren't things most bugs are into. He also laser eyes. Boog feels pretty lonely most of the time because he's the only creature of his species. Maybe one day I'll make him a friend.
+This sketch is intended to be a simulation of ant behavior, but I haven't studied ants extensively, so I'm only modeling a few aspects of their behavior. The ants (gray circles) spread out from a blue home, and they are hunting for a pink food source. When an ant finds the food source, it grabs a tiny piece of the food, and its back to its home, where it drops the morsel of food. If an ant is carrying food, it drops a pheremone that degrades over time. If another ant finds a pheremone, it learns the location of the food source, and it heads directly towards it. Over time, the food source diminishes in size until none remains, and the ants return to their original hunting behavior.
 
-Boog's sketches will be used to implement the techniques and concepts that I'm learning from other sketches into more fully developed programs.
+![A simulation of ant behavior](AntHill.gif)
 
-In one of the earliest sketches, Boog hovers waveringly in place, and he can be provoked into movement by left-clicking within the program window. He fires lasers from his eyes at the user's cursor when the user holds down the right mouse button.
+The hunting algorithm that I used is a variation on the random walk. I didn't like the way that a pure random walk looked, though. The ants were too jittery. Instead, I programmed the ants to pick a random direction, then walk in that direction for a number of random seconds before choosing a new direction. This caused more realistic-looking behavior.
 
-![Boog flying](BoogCanFly/BoogCanFly.gif)
+Some aspects I'd like to develop further and improve:
 
-I know this project can be improved, but I'm unsure how to do this at the moment. While I was creating this, I was reminded of SOLID principles and of concepts like dependency injection, and I can see how these could help me organize my objects better. I want to do more research into design patterns to learn if there is a better way to make these bugs. I'm thinking that a BoogBuilder class may be useful. I could pass a list of generic BodyPart objects into the class and build my Boogs from there. This would prevent me from having classes that generate their own dependencies.
+* I used the y=mx+b formula to determine the path my ants should take between home and food. I'd like to implement a better algorithm here.
+* I'd like to add a "home" pheremone that the ants can drop while still hunting and close to home. I'll use this in conjunction with the "food" pheremone to create a gradient, which the ants will be able to use to orient themselves towards food or home, depending upon where they "want" to go.
+* I want my ants to sense their environment better and learn more about the food and home locations based on the information they gather. Ideally they'll gather information about all the pheremones in a certain radius, then take a step (or a few steps) in a direction before gathering information again and making a new decision. If I implement this right, I don't think I'll need to store a home or food location in each ant object. I think I'll be able to let the environment inform them where home and food are. I think this is how real ants navigate.
+* I'd like to use better design principles.
 
-I'm also unsure when (at which level) each body part should be drawn. Maybe something like a BoogDisplayer would be as useful as a BoogBuilder.
+Opportunities for continued learning and research:
 
-I'm certain I should also be using interfaces and possibly parent classes in this project, but I cannot decide which to use or when.
-
-I asked a junior developer who works with me, and I asked a senior developer, and while they had several suggestions, I wasn't sure which to implement at this time. I plan to ask our architect as well.
-
-I have a lot to learn in this area! I've looked into SOLID, dependency injection, interface usage, and design patterns before, but they've never been so relevant. I'm reapproaching them now with new eyes.
-
-I will revisit this sketch when I've learned a little more.
+* I don't know enough about how interfaces and inheritance should work in Processing and Java. I could research this easily, but I chose not to here, as the main goal was to implement a project from beginning to end. As a result, there's some repetitive and less-than-ideal code in this project. I hope to return soon and improve this aspect of the sketch.
+* I purchased the book "The Insect Societies," by E.O. Wilson. He's one of the leading researchers in social insect behavior and biology, and this book supposedly analyzes ant behavior mathematically. I'm excited to see what's under the cover.
+* I want to learn more about pathfinding and navigation algorithms.

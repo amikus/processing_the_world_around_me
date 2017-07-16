@@ -8,23 +8,24 @@ class Spiral{
   float xOffset;
   float yOffset;
   int penSize;
-  color spiralColor;
+  color penColor;
   
   /**************
   * Constructor *
   **************/
-  Spiral(PolarPoint startingPolarCoordinate, int penSize, color spiralColor) {
+  Spiral(CartesianPoint startingCartesianPoint, int penSize, color penColor) {
     
-    this.polarCoordinate = startingPolarCoordinate;
+    this.polarCoordinate = new PolarPoint(0, 0);
     
     // calculate x and y offsets based on starting cartesian coordinate
-    this.startingCartesianCoordinate = startingPolarCoordinate.convertToCartesian();
-    this.xOffset = startingCartesianCoordinate.xCoordinate;
-    this.yOffset = startingCartesianCoordinate.yCoordinate;
+  
+    this.xOffset = startingCartesianPoint.xCoordinate;
+    this.yOffset = startingCartesianPoint.yCoordinate;
+    println("Starting coordinates: ("+ xOffset + ", " + yOffset + ")");
     
     // establish pen size and color
     this.penSize = penSize;
-    this.spiralColor = spiralColor;
+    this.penColor = penColor;
   }
   
   /**************
@@ -32,7 +33,17 @@ class Spiral{
   **************/  
   void display() {
     
+    CartesianPoint currentCartesianPoint = polarCoordinate.convertToCartesian();
+    float currentX = currentCartesianPoint.xCoordinate;
+    float currentY = currentCartesianPoint.yCoordinate;
     
+    noStroke();
+    fill(penColor);
+    ellipse(currentX+xOffset, currentY+yOffset, penSize, penSize);
+    
+    // increment angle
+    polarCoordinate.theta += 0.01;
+    polarCoordinate.radius += 0.1;
     
   }
   

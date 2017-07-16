@@ -7,7 +7,6 @@ Draws a spiral using polar coordinates
 ********************/
 
 CartesianPoint centerOfScreen;
-PolarPoint startingPoint;
 
 int penSize;
 Spiral spiral;
@@ -31,8 +30,7 @@ void setup() {
   penColor = 0;
   
   // create spiral
-  startingPoint = new PolarPoint(75, 0);
-  spiral = new Spiral(startingPoint, penSize, penColor);
+  spiral = new Spiral(centerOfScreen, penSize, penColor);
 }
 
 /********************
@@ -40,10 +38,8 @@ void setup() {
 ********************/
 
 void draw() {
-  noStroke();
-  fill(0);
-  
-  ellipse(centerOfScreen.xCoordinate, centerOfScreen.yCoordinate, penSize, penSize);
+
+  spiral.display();
   
 }
 

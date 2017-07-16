@@ -17,5 +17,5 @@ class CartesianPoint{
   /**************
   * Modules     *
   **************/  
-  
+
 }

@@ -7,6 +7,8 @@ Draws a spiral using polar coordinates
 ********************/
 
 CartesianPoint centerOfScreen;
+PolarPoint startingPoint;
+
 int penSize;
 Spiral spiral;
 color penColor;
@@ -24,12 +26,13 @@ void setup() {
   // find center of screen
   centerOfScreen = new CartesianPoint(width/2, height/2);
   
-  // establish size of ellipses that will be used for drawing
+  // establish size and color of ellipses that will be used for drawing
   penSize = width / 15;
   penColor = 0;
   
   // create spiral
-  spiral = new Spiral(centerOfScreen, penSize, penColor);
+  startingPoint = new PolarPoint(75, 0);
+  spiral = new Spiral(startingPoint, penSize, penColor);
 }
 
 /********************

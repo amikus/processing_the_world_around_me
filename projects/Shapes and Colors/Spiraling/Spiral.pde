@@ -3,15 +3,17 @@ class Spiral{
   /**************
   * Variables   *
   **************/
-  CartesianPoint startingPoint;
+  PolarPoint polarCoordinate;
+  CartesianPoint startingCartesianCoordinate;
   int penSize;
   color spiralColor;
   
   /**************
   * Constructor *
   **************/
-  Spiral(CartesianPoint startingPoint, int penSize, color spiralColor) {
-    this.startingPoint = startingPoint;
+  Spiral(PolarPoint startingPolarCoordinate, int penSize, color spiralColor) {
+    this.polarCoordinate = startingPolarCoordinate;
+    this.startingCartesianCoordinate = startingPolarCoordinate.convertToCartesian();
     this.penSize = penSize;
     this.spiralColor = spiralColor;
   }
@@ -20,6 +22,7 @@ class Spiral{
   * Modules     *
   **************/  
   void display() {
+    
     
   }
   

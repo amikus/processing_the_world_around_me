@@ -33,63 +33,32 @@ class LineGenerator {
     noStroke();
     ellipseMode(CENTER);
     
+    // loop through every x coordinate
+    for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
+      
+      float yCoordinate = calculateYCoordinate(xCoordinate);
+    
+      // create and draw new Point
+      Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
+      point.display();
+    
+    }
+    
+  }
+  
+  // get y-coordinate
+  float calculateYCoordinate(float xCoordinate) {
+    
     // draw a different line depending upon lineType specified
     switch(lineType) {
       case "straight":
-        displayStraight();
-        break;
+        return calculateStraightY();
       case "random":
-        displayRandom();
-        break;
+        return calculateRandomY();
       case "perlin":
-        displayPerlin();
-        break;
-    }
-    
-  }
-  
-  // draw a straight line (with a single y coordinate)
-  void displayStraight() {
-    
-    // loop through every x coordinate
-    for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
-      
-      float yCoordinate = calculateStraightY();      
-      
-      // create and draw new Point
-      Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
-      point.display();
-    }
-    
-  }
-  
-  // draw a line with randomly generated y coordinates
-  void displayRandom() {
-    
-    // loop through every x coordinate
-    for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
-      
-      float yCoordinate = calculateRandomY();
-      
-      // create and draw new Point
-      Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
-      point.display();
-        
-    }
-    
-  }
-  
-  // draw a line with y coordinates generated using Perlin noise algorithm
-  void displayPerlin() {
-    
-    // loop through every x coordinate
-    for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
-      
-      float yCoordinate = calculatePerlinY(xCoordinate);
-      
-      // create and draw new Point
-      Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
-      point.display();  
+        return calculatePerlinY(xCoordinate);
+      default:
+        return 0.0;
     }
     
   }
@@ -97,7 +66,6 @@ class LineGenerator {
   // calculate new y-coordinate for use in generating straight line
   float calculateStraightY() {
     return height/2.0;
-
   }
   
   // calculate new y-coordinate for use in generating random line

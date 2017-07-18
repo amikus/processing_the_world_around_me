@@ -54,8 +54,7 @@ class LineGenerator {
     // loop through every x coordinate
     for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
       
-      // calculate new y-coordinate for each x coordinate
-      float yCoordinate = height/2;
+      float yCoordinate = calculateStraightY();      
       
       // create and draw new Point
       Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
@@ -70,8 +69,7 @@ class LineGenerator {
     // loop through every x coordinate
     for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
       
-      // calculate new y-coordinate for each x coordinate
-      float yCoordinate = random(0, height);
+      float yCoordinate = calculateRandomY();
       
       // create and draw new Point
       Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
@@ -87,19 +85,34 @@ class LineGenerator {
     // loop through every x coordinate
     for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
       
-      // get new Perlin noise value for each x
-      // multiplying x * .01 serves same purpose as incrementing .01 in a separate variable on each loop
-      float noiseValue = noise(xCoordinate * .01);
-      
-      // calculate new y-coordinate for each x coordinate
-      // noiseValue will always be between 0 and 1, so necessary to multiply it by range of possible y values
-      float yCoordinate = noiseValue * height;
+      float yCoordinate = calculatePerlinY(xCoordinate);
       
       // create and draw new Point
       Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
       point.display();  
     }
     
+  }
+  
+  // calculate new y-coordinate for use in generating straight line
+  float calculateStraightY() {
+    return height/2.0;
+
+  }
+  
+  // calculate new y-coordinate for use in generating random line
+  float calculateRandomY() {
+    return random(0, height);  
+  }
+  
+  // calculate new y-coordinate using Perlin noise algorithm, for use in generating line
+  float calculatePerlinY(float xCoordinate) {
+      
+    // noise value varies and is dependent upon x-coordinate value
+    float noiseValue = noise(xCoordinate * .01);
+    
+    // noiseValue will always be between 0 and 1, so necessary to multiply it by range of possible y values
+    return noiseValue * height;
   }
 
   

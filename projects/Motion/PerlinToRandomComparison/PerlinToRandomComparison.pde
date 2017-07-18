@@ -7,6 +7,8 @@ A comparison of lines produced by two algorithms: random number generation and P
 ********************/
 
 LineGenerator straightLine;
+LineGenerator randomLine;
+LineGenerator perlinLine;
 
 /********************
 * Setup             *
@@ -17,9 +19,13 @@ void setup() {
   frameRate(60);
   background(250);
 
-  straightLine = new LineGenerator();
+  straightLine = new LineGenerator("straight");
+  randomLine = new LineGenerator("random");
+  perlinLine = new LineGenerator("perlin");
   
   straightLine.display();
+  randomLine.display();
+  perlinLine.display();
   
 }
 

@@ -4,11 +4,11 @@ class Oscillator {
   * Variables   *
   **************/      
   
+  Point location;    // location of circle's center
+  
   float diameter;    // diameter of circle
-  float radius;      // radius of circle
   
   float theta;        // used to calculate sine value
-  
   float rate;         // rate at which circle increases and decreases
   
   float minimumSize;  // minimum diameter
@@ -18,13 +18,11 @@ class Oscillator {
   /**************
   * Constructor *
   **************/
-  Oscillator(float xCoordinate, float yCoordinate, float diameter, float rate, float minimumSize, float maximumSize) {    
+  Oscillator(Point location, float minimumSize, float maximumSize, float rate ) {    
     
-    this.diameter = diameter;
-    this.radius = diameter/2;
+    this.location = location;
     
     theta = 0;
-    
     this.rate = rate;
     
     this.minimumSize = minimumSize;
@@ -38,22 +36,21 @@ class Oscillator {
   
   // update oscillator's position
   void oscillate() {
-    xTheta += xThetaRate;
-    yTheta += yThetaRate;
+    theta += rate;
   }
   
   // display oscillator to screen
   void display() {
     
-    fill(0);
+    fill(40);
     stroke(0);
-    strokeWeight(diameter/20);
+    ellipseMode(CENTER);
     
     // map calculated sine value from the range of -1 and 1
     // to the range of minimumSize and maximumSize
-    float x = map(sin(theta), -1, 1, minimumSize, maximumSize);
+    float diameter = map(sin(theta), -1, 1, minimumSize, maximumSize);
      
-    ellipse(x, y, diameter, diameter);
+    ellipse(location.xCoordinate, location.yCoordinate, diameter, diameter);
     
   }
   

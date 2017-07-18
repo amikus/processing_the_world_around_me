@@ -60,7 +60,7 @@ class Oscillator {
     // to the range of xRangeStart and xRangeEnd
     // radius is used to prevent ball from going beyond edge of screen 
     float x = map(sin(xTheta), -1, 1, xRangeStart+radius, xRangeEnd-radius);
-    float y = map(cos(yTheta), -1, 1, yRangeStart+radius, yRangeEnd - radius);
+    float y = map(cos(yTheta), -1, 1, yRangeStart+radius, yRangeEnd-radius);
     
     line(width/2, 0, x, y);
     //println(diameter);   

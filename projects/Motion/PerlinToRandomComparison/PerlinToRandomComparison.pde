@@ -21,10 +21,11 @@ void setup() {
   
   float penSize = height/100;
   color penColor = (15); 
+  int xIncrement = width/100;
 
-  straightLine = new LineGenerator(penSize, penColor, "straight");
-  randomLine = new LineGenerator(penSize, penColor, "random");
-  perlinLine = new LineGenerator(penSize, penColor, "perlin");
+  straightLine = new LineGenerator(penSize, penColor, "straight", xIncrement);
+  randomLine = new LineGenerator(penSize, penColor, "random", xIncrement);
+  perlinLine = new LineGenerator(penSize, penColor, "perlin", xIncrement);
   
   straightLine.display();
   randomLine.display();

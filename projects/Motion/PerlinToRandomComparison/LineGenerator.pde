@@ -8,16 +8,22 @@ class LineGenerator {
   color penColor;      // line color
   
   String lineType;     // can be straight, random, or perlin
+  int xIncrement;      // amount by which x should be incremented each time;
+  
+  Point priorPoint;    // used for holding prior point, which is needed to draw a line
   
   /**************
   * Constructor *
   **************/
-  LineGenerator(float penSize, color lineColor, String lineType) {    
+  LineGenerator(float penSize, color lineColor, String lineType, int xIncrement) {    
     
     this.penSize = penSize;
     this.penColor = lineColor;
     
     this.lineType = lineType;
+    this.xIncrement = xIncrement;
+    
+    this.priorPoint = new Point(0.0, 0.0);
     
   }
   
@@ -29,18 +35,27 @@ class LineGenerator {
   void display() {
     
     // pen qualities
-    fill(15);
-    noStroke();
+    fill(penColor);
+    stroke(penColor);
+    strokeWeight(penSize);
+    
     ellipseMode(CENTER);
     
     // loop through every x coordinate
-    for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
+    for (int xCoordinate = 0; xCoordinate <= width; xCoordinate+=xIncrement) {
       
       float yCoordinate = calculateYCoordinate(xCoordinate);
     
       // create and draw new Point
-      Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
-      point.display();
+      Point newPoint = new Point(xCoordinate, yCoordinate);      
+      
+      if (xCoordinate == 0) {
+        priorPoint = newPoint;
+      } 
+      
+      line(priorPoint.xCoordinate, priorPoint.yCoordinate, newPoint.xCoordinate, newPoint.yCoordinate);
+    
+      priorPoint = newPoint;
     
     }
     

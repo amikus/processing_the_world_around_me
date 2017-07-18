@@ -5,7 +5,7 @@ class LineGenerator {
   **************/      
   
   float penSize;       // line thickness
-  float penColor;      // line color
+  color penColor;      // line color
   
   String lineType;     // can be straight, random, or perlin
   
@@ -52,13 +52,14 @@ class LineGenerator {
   void displayStraight() {
     
     // loop through every x coordinate
-    for (int x = 0; x <= width; x++) {
+    for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
       
       // calculate new y-coordinate for each x coordinate
       float yCoordinate = height/2;
       
-      // draw to screen
-      ellipse(x, yCoordinate, penSize, penSize);  
+      // create and draw new Point
+      Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
+      point.display();
     }
     
   }
@@ -67,13 +68,15 @@ class LineGenerator {
   void displayRandom() {
     
     // loop through every x coordinate
-    for (int x = 0; x <= width; x++) {
+    for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
       
       // calculate new y-coordinate for each x coordinate
       float yCoordinate = random(0, height);
       
-      // draw to screen
-      ellipse(x, yCoordinate, penSize, penSize);  
+      // create and draw new Point
+      Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
+      point.display();
+        
     }
     
   }
@@ -82,18 +85,19 @@ class LineGenerator {
   void displayPerlin() {
     
     // loop through every x coordinate
-    for (int x = 0; x <= width; x++) {
+    for (int xCoordinate = 0; xCoordinate <= width; xCoordinate++) {
       
       // get new Perlin noise value for each x
       // multiplying x * .01 serves same purpose as incrementing .01 in a separate variable on each loop
-      float noiseValue = noise(x * .01);
+      float noiseValue = noise(xCoordinate * .01);
       
       // calculate new y-coordinate for each x coordinate
       // noiseValue will always be between 0 and 1, so necessary to multiply it by range of possible y values
       float yCoordinate = noiseValue * height;
       
-      // draw to screen
-      ellipse(x, yCoordinate, penSize, penSize);  
+      // create and draw new Point
+      Point point = new Point(xCoordinate, yCoordinate, penSize, penColor);      
+      point.display();  
     }
     
   }

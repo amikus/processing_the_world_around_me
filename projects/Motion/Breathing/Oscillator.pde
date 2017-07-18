@@ -18,7 +18,7 @@ class Oscillator {
   /**************
   * Constructor *
   **************/
-  Oscillator(Point location, float minimumSize, float maximumSize, float rate ) {    
+  Oscillator(Point location, float rate, float minimumSize, float maximumSize) {    
     
     this.location = location;
     

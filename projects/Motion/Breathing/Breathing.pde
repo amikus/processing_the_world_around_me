@@ -14,14 +14,14 @@ Oscillator circle;
 void setup() {
   
   size(500, 500);
-  frameRate(60);
+  frameRate(1);
   
-  Point location = new Point(width/2, height * .4);
-  float theta = 0.05;
+  Point location = new Point(width/2, height/2);
+  float rate = 0.15;
   float minimumDiameter = height/4;
   float maximumDiameter = height/2;
   
-  circle = new Oscillator(location, theta, minimumDiameter, maximumDiameter);
+  circle = new Oscillator(location, rate, minimumDiameter, maximumDiameter);
   
 }
 

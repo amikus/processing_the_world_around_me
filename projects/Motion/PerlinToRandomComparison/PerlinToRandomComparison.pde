@@ -19,7 +19,7 @@ void setup() {
   frameRate(60);
   background(250);
   
-  float penSize = height/100;
+  float penSize = height/125;
   color penColor = (15); 
   int xIncrement = width/100;
 
@@ -27,7 +27,7 @@ void setup() {
   randomLine = new LineGenerator(penSize, penColor, "random", xIncrement);
   perlinLine = new LineGenerator(penSize, penColor, "perlin", xIncrement);
   
-  straightLine.display();
+  // straightLine.display();
   randomLine.display();
   perlinLine.display();
   

@@ -5,16 +5,19 @@ A series of pendulums swing from side to side.
 /********************
 * Variables         *
 ********************/
-float theta = 0;
+
+Oscillator pendulum;
 
 /********************
 * Setup             *
 ********************/
 void setup() {
   
-  background(0);
   size(500, 500);
+  frameRate(60);
   
+  float pendulumSize = width/10;
+  pendulum = new Oscillator(pendulumSize, 0.05, 0.05, 0, height*0.5);
 }
 
 /********************
@@ -22,17 +25,10 @@ void setup() {
 ********************/
 void draw() {
  
-  background(255);
+  background(230);
+
+  pendulum.display();
+  pendulum.oscillate();
   
-  float x = map(sin(theta), -1, 1, 0, 500);
-  
-  // with each cycle increment theta
-  theta += 0.05;
-  
-  // draw the ellipse at the value produced by sine
-  fill(0);
-  stroke(0);
-  line(width/2, 0, x, height/2);
-  ellipse(x, height/2, 16, 16);
   
 }

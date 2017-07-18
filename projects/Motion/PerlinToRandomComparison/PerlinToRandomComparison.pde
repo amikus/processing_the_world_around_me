@@ -18,10 +18,13 @@ void setup() {
   size(500, 500);
   frameRate(60);
   background(250);
+  
+  float penSize = height/100;
+  color penColor = (15); 
 
-  straightLine = new LineGenerator("straight");
-  randomLine = new LineGenerator("random");
-  perlinLine = new LineGenerator("perlin");
+  straightLine = new LineGenerator(penSize, penColor, "straight");
+  randomLine = new LineGenerator(penSize, penColor, "random");
+  perlinLine = new LineGenerator(penSize, penColor, "perlin");
   
   straightLine.display();
   randomLine.display();

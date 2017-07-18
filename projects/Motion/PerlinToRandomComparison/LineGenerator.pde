@@ -4,14 +4,18 @@ class LineGenerator {
   * Variables   *
   **************/      
   
-  float penSize = height/100; // line thickness
+  float penSize;       // line thickness
+  float penColor;      // line color
   
   String lineType;     // can be straight, random, or perlin
   
   /**************
   * Constructor *
   **************/
-  LineGenerator(String lineType) {    
+  LineGenerator(float penSize, color lineColor, String lineType) {    
+    
+    this.penSize = penSize;
+    this.penColor = lineColor;
     
     this.lineType = lineType;
     

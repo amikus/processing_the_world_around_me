@@ -28,7 +28,7 @@ void setup() {
   perlinLine = new LineGenerator(penSize, penColor, "perlin", xIncrement);
   
   // straightLine.display();
-  randomLine.display();
+  // randomLine.display();
   perlinLine.display();
   
 }

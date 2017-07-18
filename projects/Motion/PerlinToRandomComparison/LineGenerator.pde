@@ -27,6 +27,7 @@ class LineGenerator {
     // pen qualities
     fill(15);
     noStroke();
+    ellipseMode(CENTER);
     
     // draw a different line depending upon lineType specified
     switch(lineType) {
@@ -50,7 +51,7 @@ class LineGenerator {
     for (int x = 0; x <= width; x++) {
       
       // calculate new y-coordinate for each x coordinate
-      float yCoordinate = height/2 - penSize;
+      float yCoordinate = height/2;
       
       // draw to screen
       ellipse(x, yCoordinate, penSize, penSize);  
@@ -65,8 +66,7 @@ class LineGenerator {
     for (int x = 0; x <= width; x++) {
       
       // calculate new y-coordinate for each x coordinate
-      // this is not correct at the moment
-      float yCoordinate = height/2 - penSize;
+      float yCoordinate = random(0, height);
       
       // draw to screen
       ellipse(x, yCoordinate, penSize, penSize);  
@@ -80,9 +80,13 @@ class LineGenerator {
     // loop through every x coordinate
     for (int x = 0; x <= width; x++) {
       
+      // get new Perlin noise value for each x
+      // multiplying x * .01 serves same purpose as incrementing .01 in a separate variable on each loop
+      float noiseValue = noise(x * .01);
+      
       // calculate new y-coordinate for each x coordinate
-      // this is not correct at the moment
-      float yCoordinate = height/2 - penSize;
+      // noiseValue will always be between 0 and 1, so necessary to multiply it by range of possible y values
+      float yCoordinate = noiseValue * height;
       
       // draw to screen
       ellipse(x, yCoordinate, penSize, penSize);  

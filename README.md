@@ -21,7 +21,7 @@ In this space, without shame or reservation:
 &nbsp;&nbsp;&nbsp;&nbsp;Je ne trouve pas, je cherche.
 
 
-##A table of contents
+## A table of contents
 
 * [Ant Hill](projects/AntHill/AntHill.md) - Ant-like objects hunt for food and return it to their home.
 * [Boog](projects/Boog/Boog.md) - A small flying bug shoots lasers out of its eyes.

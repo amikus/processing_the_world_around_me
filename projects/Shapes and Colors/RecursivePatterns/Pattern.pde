@@ -33,9 +33,23 @@ class Pattern {
   **************/  
   void display() {
     
+    
     noStroke();
     fill(penColor);
     
+    switch(patternType){
+      case "Concentric":
+        println("Concentric was chosen.");
+        break;
+      case "Row":
+        println("Row was chosen");
+        break;
+      case "Cross":
+        println("Cross was chosen");
+        break;
+    }
+      
+    
   }
-  
+
 }

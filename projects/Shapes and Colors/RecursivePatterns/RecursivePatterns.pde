@@ -39,9 +39,9 @@ void setup() {
   
   
   // load the patterns into the array
-  patternArray[0] = new Pattern("concentric", centerOfScreen, startingRadius, penSize, penColor);
-  patternArray[1] = new Pattern("row", centerOfScreen, startingRadius, penSize, penColor);
-  patternArray[2] = new Pattern("cross", centerOfScreen, startingRadius, penSize, penColor);
+  patternArray[0] = new Pattern("Concentric", centerOfScreen, startingRadius, penSize, penColor);
+  patternArray[1] = new Pattern("Row", centerOfScreen, startingRadius, penSize, penColor);
+  patternArray[2] = new Pattern("Cross", centerOfScreen, startingRadius, penSize, penColor);
   
 }
 
@@ -51,7 +51,7 @@ void setup() {
 
 void draw() {
 
-  patternArray[i].display();
+  patternArray[currentPatternNumber].display();
   
 }
 

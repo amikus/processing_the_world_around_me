@@ -39,7 +39,7 @@ class Pattern {
     
     switch(patternType){
       case "Concentric":
-        println("Concentric was chosen.");
+        println("Concentric was chosen");
         break;
       case "Row":
         println("Row was chosen");
@@ -48,7 +48,47 @@ class Pattern {
         println("Cross was chosen");
         break;
     }
-      
+    
+  }
+  
+  // recursive function for drawing concentric ellipse pattern
+  void drawConcentric(float x, float y, float radius) {
+    
+    ellipse(x, y, radius, radius);
+    
+    // recursively adjust ellipse size
+    if (radius > 2) {
+      radius *= 0.75;
+      drawConcentric(x, y, radius);
+    }
+    
+  }
+  
+  // recursive function for drawing row ellipse pattern
+  void drawRow(float x, float y, float radius) {
+    
+    ellipse (x, y, radius, radius);
+    
+    // recursively adjust ellipse size and position before redrawing
+    if (radius > 2) {
+      drawRow(x + radius/2, y, radius/2);
+      drawRow(x - radius/2, y, radius/2);
+    }
+    
+  }
+ 
+  // recursive function for drawing cross ellipse pattern
+  void drawCross(float x, float y, float radius) {
+    
+    ellipse(x, y, radius, radius);
+    
+    // recursively adjust ellipse size and position before redrawing
+    if (radius > 8) {
+      drawCross(x + radius/2, y, radius/2);
+      drawCross(x - radius/2, y, radius/2);
+      drawCross(x, y + radius/2, radius/2);
+      drawCross(x, y - radius/2, radius/2);
+    }
     
   }
 

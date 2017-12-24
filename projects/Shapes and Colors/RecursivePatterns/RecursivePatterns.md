@@ -1,7 +1,13 @@
-A series of drawings made with recursive calls.
+A series of drawings made using recursive calls to recursive calls which make calls to recursive calls.
 
-![Concentric Circles](ConcentricCircles.png)
+Which make calls.
 
-![A Row of Circles](RowOfCircles.png)
+Also to recursive calls.
 
-![A Cross of Circles](CrossOfCircles.png)
+It's ellipses all the way down (until it isn't anymore).
+
+![Concentric Ellipses](concentricPattern.png)
+
+![A Row of Ellipses](rowPattern.png)
+
+![A Cross of Ellipses](crossPattern.png)

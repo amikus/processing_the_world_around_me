@@ -11,9 +11,10 @@ Pattern[] patternArray;
 int penSize;
 int penColor;
 
-float startingRadius;      // radius of starting ellipse
+float startingRadius;   // radius of starting ellipse
 
-int currentPatternNumber;  // current pattern number, to be cycled using click
+int patternNumber;      // current pattern number, to be cycled using mouse click
+int maxPatternIndex;    // number of indexes required by pattern array
 
 /********************
 * Setup             *
@@ -35,10 +36,10 @@ void setup() {
 
   // create pattern array and establish starting pattern
   patternArray = new Pattern[3];
-  currentPatternNumber = 0;
-  
+  patternNumber = 0;
   
   // load the patterns into the array
+  maxPatternIndex = 2;
   patternArray[0] = new Pattern("Concentric", centerOfScreen, startingRadius, penSize, penColor);
   patternArray[1] = new Pattern("Row", centerOfScreen, startingRadius, penSize, penColor);
   patternArray[2] = new Pattern("Cross", centerOfScreen, startingRadius, penSize, penColor);
@@ -51,10 +52,19 @@ void setup() {
 
 void draw() {
 
-  patternArray[currentPatternNumber].display();
+  patternArray[patternNumber].display();
   
 }
 
 /********************
 * Other Methods     *
 ********************/
+
+void mousePressed() {
+  // loop through the images when the mouse button is clicked
+  if (patternNumber == maxPatternIndex) {
+    patternNumber = 0;
+  } else {
+    patternNumber++;
+  }
+}

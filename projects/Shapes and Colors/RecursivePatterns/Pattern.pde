@@ -34,18 +34,18 @@ class Pattern {
   void display() {
     
     
-    noStroke();
-    fill(penColor);
+    stroke(penColor);
+    noFill();
     
     switch(patternType){
       case "Concentric":
-        println("Concentric was chosen");
+        drawConcentric(xOffset, yOffset, radius);
         break;
       case "Row":
-        println("Row was chosen");
+        drawRow(xOffset, yOffset, radius);
         break;
       case "Cross":
-        println("Cross was chosen");
+        drawCross(xOffset, yOffset, radius);
         break;
     }
     

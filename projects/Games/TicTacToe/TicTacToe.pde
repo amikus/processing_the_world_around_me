@@ -12,7 +12,10 @@ void setup() {
 }
 
 void draw() {
+  
   background(0);
+  
+  // display the game board
   for (int i = 0; i < cols; i++) {
       for (int j = 0; j < rows; j++) {
         board[i][j].display();
@@ -22,25 +25,4 @@ void draw() {
 
 void mousePressed() {
   
-}
-
-// A Cell object
-class Cell {
-  float x, y;
-  float w, h;
-  int state;    // can be "O" or nothing
-  
-  // Cell constructor
-  Cell(float tempX, float tempY, float tempW, float tempH) {
-    
-    // stub
-  }
-  
-  void click(int mx, int my) {
-    // stub
-  }
-  
-  void display() {
-    // stub
-  }
 }

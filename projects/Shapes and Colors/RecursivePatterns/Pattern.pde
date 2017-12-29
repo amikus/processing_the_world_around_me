@@ -105,7 +105,12 @@ class Pattern {
   
   // recursive function for drawing upside-down branching tree structure
   void drawBranch(float x, float y, float h) {
-    println("Branch");  
+    line(x, y, x-h, y-h);
+    line(x, y, x+h, y-h);
+    if (h > 2.0) {
+      drawBranch(x-h, y-h, h/2.0);
+      drawBranch(x+h, y-h, h/2.0);
+    }
   }
 
 }

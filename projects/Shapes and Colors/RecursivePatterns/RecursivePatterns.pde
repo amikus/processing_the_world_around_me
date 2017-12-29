@@ -12,7 +12,7 @@ int penSize;
 int penColor;
 
 float startingRadius;   // radius of starting ellipse
-float branchYOrigin;    // y-position of starting branch
+float branchHeight;     // height of starting branch
 
 int numberOfPatterns;   // total number of patterns to be displayed
 int patternNumber;      // current pattern number, to be cycled using mouse click
@@ -35,6 +35,7 @@ void setup() {
   // establish ellipse characteristics
   CartesianPoint centerOfScreen = new CartesianPoint(width/2, height/2);
   startingRadius = width/2.0;
+  branchHeight = height/4.0;
 
   // create pattern array and establish starting pattern
   numberOfPatterns = 4;
@@ -46,7 +47,7 @@ void setup() {
   patternArray[0] = new Pattern("Concentric", centerOfScreen, startingRadius, penSize, penColor);
   patternArray[1] = new Pattern("Row", centerOfScreen, startingRadius, penSize, penColor);
   patternArray[2] = new Pattern("Cross", centerOfScreen, startingRadius, penSize, penColor);
-  patternArray[3] = new Pattern("Branch", centerOfScreen, branchYOrigin, penSize, penColor);
+  patternArray[3] = new Pattern("Branch", centerOfScreen, branchHeight, penSize, penColor);
   
 }
 

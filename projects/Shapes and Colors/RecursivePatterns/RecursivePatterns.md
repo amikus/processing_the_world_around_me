@@ -11,3 +11,5 @@ It's ellipses all the way down (until it isn't anymore).
 ![A Row of Ellipses](rowPattern.png)
 
 ![A Cross of Ellipses](crossPattern.png)
+
+![An Inverted Branching Pattern](branchPattern.png)

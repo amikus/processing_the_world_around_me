@@ -4,17 +4,21 @@ class Pattern {
   * Variables   *
   **************/
   
-  String patternType;  // Concentric, Row, Cross
+  String patternType;  // Concentric, Row, Cross, Branch
+  
   float xOffset;       // x and y coordinates of starting position
   float yOffset;
+  
   float radius;        // radius of starting circle
+  float branchHeight;  // height of branch, used only for branching pattern
+  
   int penSize;         // pen characteristics
   color penColor;
   
   /**************
   * Constructor *
   **************/
-  Pattern(String patternType, CartesianPoint startingCartesianPoint, float radius, int penSize, color penColor) {
+  Pattern(String patternType, CartesianPoint startingCartesianPoint, float startingSize, int penSize, color penColor) {
     
     this.patternType = patternType;
     
@@ -22,7 +26,11 @@ class Pattern {
     this.xOffset = startingCartesianPoint.xCoordinate;
     this.yOffset = startingCartesianPoint.yCoordinate;
     
-    this.radius = radius;
+    if (this.patternType == "Concentric" || this.patternType == "Row" || this.patternType == "Cross") {
+      this.radius = startingSize;
+    } else if (this.patternType == "Branch") {
+      this.branchHeight = startingSize;
+    }
     
     this.penSize = penSize;
     this.penColor = penColor;
@@ -46,6 +54,9 @@ class Pattern {
         break;
       case "Cross":
         drawCross(xOffset, yOffset, radius);
+        break;
+      case "Branch":
+        drawBranch(xOffset, yOffset, branchHeight);
         break;
     }
     
@@ -90,6 +101,11 @@ class Pattern {
       drawCross(x, y - radius/2, radius/2);
     }
     
+  }
+  
+  // recursive function for drawing upside-down branching tree structure
+  void drawBranch(float x, float y, float h) {
+    println("Branch");  
   }
 
 }

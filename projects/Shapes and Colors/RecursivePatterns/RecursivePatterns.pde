@@ -12,7 +12,9 @@ int penSize;
 int penColor;
 
 float startingRadius;   // radius of starting ellipse
+float branchYOrigin;    // y-position of starting branch
 
+int numberOfPatterns;   // total number of patterns to be displayed
 int patternNumber;      // current pattern number, to be cycled using mouse click
 int maxPatternIndex;    // number of indexes required by pattern array
 
@@ -35,14 +37,16 @@ void setup() {
   startingRadius = width/2.0;
 
   // create pattern array and establish starting pattern
-  patternArray = new Pattern[3];
+  numberOfPatterns = 4;
+  patternArray = new Pattern[numberOfPatterns];
+  maxPatternIndex = numberOfPatterns-1;
   patternNumber = 0;
   
   // load the patterns into the array
-  maxPatternIndex = 2;
   patternArray[0] = new Pattern("Concentric", centerOfScreen, startingRadius, penSize, penColor);
   patternArray[1] = new Pattern("Row", centerOfScreen, startingRadius, penSize, penColor);
   patternArray[2] = new Pattern("Cross", centerOfScreen, startingRadius, penSize, penColor);
+  patternArray[3] = new Pattern("Branch", centerOfScreen, branchYOrigin, penSize, penColor);
   
 }
 

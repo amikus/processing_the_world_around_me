@@ -21,6 +21,26 @@ class Cell {
   }
   
   void display() {
-    // stub
+    
+    // define pen characteristics
+    stroke(0);
+    noFill();
+    
+    // draw the cell
+    rect(x, y, w, h);
+    
+    // draw X or O
+    switch(state) {
+      // draw an O
+      case 1:
+        ellipse(x+(w*.5), y+(h*.5), w*.5, h*.5);
+        break;
+      // draw an X
+      case 2:
+        line(x, y, x+w, y+h);
+        line(x+w, y, x, y+h);
+        break;
+    }
+      
   }
 }

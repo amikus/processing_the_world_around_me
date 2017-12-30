@@ -16,19 +16,27 @@ class Cell {
     
   }
   
-  // toggle the cell's state if the mouse is within the cell's boundaries
-  void click(int mouseX, int mouseY) {
+  // toggle the Cell's state if the mouse is within the cell's boundaries
+  boolean click(int mouseX, int mouseY, int activePlayer) {
     
     if (mouseX >= x && mouseX <= x+w &&
         mouseY >= y && mouseY <= y+h) {
+          
           if (state == 0) {
-            state++;
-            println(state);
-          } else if (state == 1) {
-            state--;
-            println(state);
+            if (activePlayer == 1) {
+              state = 1;
+              return true;
+            }
+            
+            if (activePlayer == 2) {
+              state = 2;
+              return true;
+            }
           }
         }
+        
+     // if nothing changed, let the client know
+     return false;
     
   }
   

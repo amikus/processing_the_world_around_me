@@ -41,3 +41,4 @@ In this space, without shame or reservation:
 * [Shifting Background](projects/Shapes%20and%20Colors/ShiftingBackground/ShiftingBackground.md) - A background glides from one hue to another as the mouse slides over its surface.
 * [Sketchpad](projects/SimpleContinuousSketchPad/SimplecontinuousSketchPad.md) - A simple etch-a-sketch-esque drawing tool.
 * [Spiral](projects/Shapes%20and%20Colors/Spiraling/Spiraling.md) - A single lonely spiral.
+* [Tic Tac Toe](projects/Games/TicTacToe/TicTacToe.md) - A basic Tic Tac Toe game.

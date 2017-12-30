@@ -51,4 +51,10 @@ void draw() {
 
 void mousePressed() {
   
+  // check each cell to see if the mouse falls within its boundaries
+  for (int i = 0; i < cols; i++) {
+      for (int j = 0; j < rows; j++) {
+        board[i][j].click(mouseX, mouseY);
+      }
+  }  
 }

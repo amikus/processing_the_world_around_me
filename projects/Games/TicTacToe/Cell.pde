@@ -16,8 +16,20 @@ class Cell {
     
   }
   
-  void click(int mx, int my) {
-    // stub
+  // toggle the cell's state if the mouse is within the cell's boundaries
+  void click(int mouseX, int mouseY) {
+    
+    if (mouseX >= x && mouseX <= x+w &&
+        mouseY >= y && mouseY <= y+h) {
+          if (state == 0) {
+            state++;
+            println(state);
+          } else if (state == 1) {
+            state--;
+            println(state);
+          }
+        }
+    
   }
   
   void display() {

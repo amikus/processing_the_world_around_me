@@ -57,8 +57,8 @@ class Cell {
         break;
       // draw an X
       case 2:
-        line(x, y, x+w, y+h);
-        line(x+w, y, x, y+h);
+        line(x+w*.25, y+h*.25, x+w*.75, y+h*.75);
+        line(x+w*.75, y+h*.25, x+w*.25, y+h*.75);
         break;
     }
       

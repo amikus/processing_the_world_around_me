@@ -39,6 +39,6 @@ In this space, without shame or reservation:
 * [Recursive Patterns](projects/Shapes%20and%20Colors/RecursivePatterns/RecursivePatterns.md) - A series of recursive drawings.
 * [Rollovers and Switches](projects/Shapes%20and%20Colors/Rollovers%20and%20Switches/Rollover.md) - An exploration of rollovers and switches.
 * [Shifting Background](projects/Shapes%20and%20Colors/ShiftingBackground/ShiftingBackground.md) - A background glides from one hue to another as the mouse slides over its surface.
-* [Sketchpad](projects/SimpleContinuousSketchPad/SimplecontinuousSketchPad.md) - A simple etch-a-sketch-esque drawing tool.
+* [Sketchpad](projects/SimpleContinuousSketchPad/SimpleContinuousSketchPad.md) - A simple etch-a-sketch-esque drawing tool.
 * [Spiral](projects/Shapes%20and%20Colors/Spiraling/Spiraling.md) - A single lonely spiral.
 * [Tic Tac Toe](projects/Games/TicTacToe/TicTacToe.md) - A basic Tic Tac Toe game.

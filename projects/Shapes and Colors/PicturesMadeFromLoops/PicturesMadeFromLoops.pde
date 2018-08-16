@@ -50,12 +50,17 @@ void draw() {
       // a value scale made of evenly sized squares
       drawValueScale();
       break;
+      
+    case 6:
+      // a series of morphing rectangles that utiize vertices and beginShape/endShape
+      drawMorphingRectangles();
+      break;
   }
 }
 
 void mousePressed() {
   // loop through the images when the mouse button is clicked
-  if (imageNumber == 5) {
+  if (imageNumber == 6) {
     imageNumber = 0;
   } else {
     imageNumber++;
@@ -129,5 +134,30 @@ void drawValueScale() {
 
     valueSquareSpacing += 25;  
   }
+  
+}
+
+// draw a series of rectangles that gradually morph into trapezoids
+// this is the only drawing to make use of beginShape() and vertices
+void drawMorphingRectangles() {
+  
+  fill(175);
+  
+  for (int i=0; i<10; i++) {
+  
+    float offsetFromLeftEdge = i * (width * 0.1);
+    float rectangleWidth = width * .075;
+    float offsetFromTop = height * .05;
+    float offsetFromBottom = height - (height * .1);
+    
+    beginShape();
+      vertex(offsetFromLeftEdge, offsetFromTop-i);
+      vertex(offsetFromLeftEdge + rectangleWidth, offsetFromTop+i);
+      vertex(offsetFromLeftEdge + rectangleWidth, offsetFromBottom-i);
+      vertex(offsetFromLeftEdge, offsetFromBottom+i);
+    endShape(CLOSE);
+    
+  }
+  
   
 }
